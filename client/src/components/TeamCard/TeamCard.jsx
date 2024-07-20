@@ -1,6 +1,6 @@
 import React from "react";
 import "./TeamCard.css";
-import AnimatedButton from "./AnimatedButton";
+import AnimatedButton from "../AnimatedButton/AnimatedButton";
 
 function TeamCard(props) {
   return (
