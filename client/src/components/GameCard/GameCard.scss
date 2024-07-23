@@ -1,0 +1,82 @@
+// $card-bg-color: #fffcf2;
+// $card-border-color: #fffcf2;
+$card-bg-color: #FAFAF5;
+$card-border-color: #FAFAF5;
+$card-hover-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+// $card-hover-shadow: 0px 6px 6px #999;
+$team-logo-size: 55px;
+$font-bold: bold;
+$font-size: 18px;
+
+@mixin transition($property, $duration) {
+  transition: $property $duration ease;
+}
+
+.game-card {
+  background: $card-bg-color;
+  border: 1px solid $card-border-color;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  text-align: center;
+  box-shadow: $card-hover-shadow;
+  @include transition(transform, 400ms);
+  display: flex;
+	flex-direction: row;
+  align-items: center;
+
+  &:hover {
+    transform: scale(1.05);
+		cursor: pointer;
+  }
+
+	.game-details {
+    font-size: clamp(14px, 2vw, 18px);
+    margin-bottom: 8px;
+
+    &:hover {
+      cursor: text;
+    }
+	}
+
+  .team {
+    display: flex;
+    align-items: center;
+		margin-top: 8px;
+    margin-bottom: 8px;
+		margin-left: 10px;
+		margin-right: 10px;
+
+    &.team-left {
+			flex: 1;
+      justify-content: flex-start;
+			display: flex;
+    }
+
+    &.team-right {
+			flex: 1;
+      justify-content: flex-end;
+			display: flex;
+    }
+
+    .team-logo {
+      width: $team-logo-size;
+      height: $team-logo-size;
+    }
+
+    span {
+      font-size: $font-size;
+      font-weight: $font-bold;
+    }
+  }
+
+  .vs {
+    font-size: $font-size;
+    margin: 10px;
+  }
+
+  .game-date {
+    font-size: 16px;
+    color: #666;
+  }
+}

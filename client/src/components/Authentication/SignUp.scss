@@ -1,0 +1,51 @@
+$dark-green: #426B1F;
+$light-bg: #fffcf2;
+$slightly-darker-bg: #FAFAF5;
+$bright-green: #28a745;
+
+.signup-container {
+  background-color: $light-bg;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+
+  h2 {
+    color: $dark-green;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: $dark-green;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid $dark-green;
+      border-radius: 4px;
+    }
+  }
+
+  .signup-btn {
+    background-color: $bright-green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: darken($bright-green, 10%);
+    }
+  }
+}
