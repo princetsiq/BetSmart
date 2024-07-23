@@ -10,7 +10,7 @@ function NavBar(){
                 BetSmart
             </Link>
                 <ul className="pages">
-                    <CustomLink to="/sports"> Sports </CustomLink>
+                    <CustomLink to="/sports"> Games </CustomLink>
                     <CustomLink to="/teams"> Teams </CustomLink>
                     <CustomLink to="/whoweare"> Who We Are </CustomLink>
                     <CustomLink to="/myprofile"> My Profile </CustomLink>

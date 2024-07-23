@@ -4,7 +4,7 @@
 
 @font-face{
     font-family: logoFont;
-    src: url(../assets/fonnts.com-CN_BOLD.ttf)
+    src: url(../assets/fonts/fonnts.com-CN_BOLD.ttf)
 }
   
 .site-title{
@@ -64,7 +64,8 @@
     background-color: #0c7850;
     border-radius: .6rem;
     width:fit-content;
-    padding: .25rem
+    padding: .25rem;
+    color: white;
 }
   
 body{

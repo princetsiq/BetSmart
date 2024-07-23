@@ -1,11 +1,11 @@
 import React from "react"
 
 
-function Sports(){
+function Games(){
     return(
-        <h1>Sports</h1>
+        <h1>Games Page</h1>
 
     );
 }
 
-export default Sports
+export default Games
