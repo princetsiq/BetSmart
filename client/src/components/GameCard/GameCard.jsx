@@ -1,15 +1,6 @@
 import React from 'react';
 import './GameCard.scss';
 
-// const GameCard = ({ game }) => {
-//   return (
-//     <div className="game-card">
-//       <h3>{game.team1} vs {game.team2}</h3>
-//       <p>{game.date}</p>
-//     </div>
-//   );
-// };
-
 const GameCard = ({ game }) => {
   return (
     <div className="game-card">

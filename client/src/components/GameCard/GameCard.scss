@@ -1,24 +1,9 @@
-// .game-card {
-//   background: #fffcf2;
-// 	color: #000000; 
-//   border: 1px solid #ddd;
-//   border-radius: 8px;
-//   padding: 16px;
-//   margin: 8px;
-//   text-align: center;
-//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-//   transition: transform 0.3s ease;
-// }
-
-// .game-card:hover {
-//   transform: scale(1.05);
-// }
-
 // $card-bg-color: #fffcf2;
 // $card-border-color: #fffcf2;
 $card-bg-color: #FAFAF5;
 $card-border-color: #FAFAF5;
-$card-hover-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+$card-hover-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
+// $card-hover-shadow: 0px 6px 6px #999;
 $team-logo-size: 55px;
 $font-bold: bold;
 $font-size: 18px;
@@ -35,7 +20,7 @@ $font-size: 18px;
   margin: 8px;
   text-align: center;
   box-shadow: $card-hover-shadow;
-  @include transition(transform, 0.3s);
+  @include transition(transform, 400ms);
   display: flex;
 	flex-direction: row;
   align-items: center;
@@ -48,6 +33,10 @@ $font-size: 18px;
 	.game-details {
     font-size: clamp(14px, 2vw, 18px);
     margin-bottom: 8px;
+
+    &:hover {
+      cursor: text;
+    }
 	}
 
   .team {
