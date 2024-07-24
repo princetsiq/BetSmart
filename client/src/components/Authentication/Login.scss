@@ -1,25 +1,36 @@
 // $bg-light: #efefef;
-$bg-light:#f4efdc;
+$bg-light: #FAFAF5;
 $bg-dark: #707070;
 $clr: #58bc82;
 $clr-alpha: rgba(92, 188, 130, 0.38);
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 300px;
-  
-  .input-span {
+.login-container {
+  background-color: $bg-light;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+
+  .form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .input-div {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
-  input[type="email"], input[type="password"] {
+  input[type="email"],
+  input[type="password"] {
     border-radius: 0.5rem;
     padding: 1rem 0.75rem;
     width: 100%;
@@ -62,7 +73,7 @@ $clr-alpha: rgba(92, 188, 130, 0.38);
     }
   }
 
-  .span {
+  .link-div {
     text-decoration: none;
     color: $bg-dark;
 

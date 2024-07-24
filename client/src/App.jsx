@@ -5,7 +5,6 @@ import Layout from './components/Layout/Layout';
 import SignUp from './components/Authentication/SignUp';
 import Login from './components/Authentication/Login';
 import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
-import Teams from './pages/Teams/Teams';
 import Home from './pages/Home/Home';
 import MyProfile from './pages/MyProfile/MyProfile';
 import Followed from './pages/Followed/Followed';
@@ -53,8 +52,6 @@ const miamiHeatData = Array.from({ length: 10 }, () => ({
   description: placeholderDesc,
   link: pLink,
 }));
-
-
 
 function App() {
   return (

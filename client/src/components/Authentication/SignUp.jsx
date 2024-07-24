@@ -1,4 +1,3 @@
-// SignUp.jsx
 import React from 'react';
 import './SignUp.scss';
 
@@ -8,8 +7,12 @@ const SignUp = () => {
       <h2>Sign Up</h2>
       <form>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" required />
+          <label htmlFor="first-name">First Name:</label>
+          <input type="text" id="first-name" name="firstName" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="last-name">Last Name:</label>
+          <input type="text" id="last-name" name="lastName" required />
         </div>
         <div className="form-group">
           <label htmlFor="email">Email:</label>
