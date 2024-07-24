@@ -6,7 +6,12 @@ $green: #426B1F;
 * {
   box-sizing: border-box;
 }
-  
+
+
+@font-face{
+  font-family: logoFont;
+  src: url(../../assets/fonts/fonnts.com-CN_BOLD.ttf)
+}
 .site-title {
   font-size: 2rem;
   font-family: logoFont;

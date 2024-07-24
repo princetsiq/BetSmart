@@ -1,0 +1,12 @@
+.header {
+	align-items: center;
+	box-sizing: border-box;
+	font-weight: 200;
+	padding: 3rem 0 3rem 30rem;
+}
+
+.header i{
+	display: flexbox;
+	flex-direction: row;
+	padding: 0 .5rem
+}
