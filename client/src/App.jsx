@@ -34,7 +34,6 @@ import Home from './pages/Home/Home';
 import MyProfile from './pages/MyProfile/MyProfile';
 import Followed from './pages/Followed/Followed';
 import heat from "./assets/image.png";
-import './App.css';
 
 const games = [
   { team1: 'Team A', team2: 'Team B', date: '2024-07-20' },
