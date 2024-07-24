@@ -1,10 +1,10 @@
 import React from 'react'
-import '../components/ImageCarousel.css'
-import nbaLogo from '../assets/logos/nba.svg'
-import nflLogo from '../assets/logos/nfl.svg'
-import nhlLogo from  '../assets/logos/nhl.jpeg'
-import wnbaLogo from '../assets/logos/wnba.png'
-import ufcLogo from '../assets/logos/ufc.png'
+// import '../../components/ImageCarousel/ImageCarousel.scss'
+// import nbaLogo from '../assets/logos/nba.svg'
+// import nflLogo from '../assets/logos/nfl.svg'
+// import nhlLogo from  '../assets/logos/nhl.jpeg'
+// import wnbaLogo from '../assets/logos/wnba.png'
+// import ufcLogo from '../assets/logos/ufc.png'
 
 const imageCarousel = () => {
   return (

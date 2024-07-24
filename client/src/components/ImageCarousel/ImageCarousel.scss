@@ -1,9 +1,9 @@
-.logo-scroller img{
+.logo-scroller img {
 	height: 80px;
 	margin: 0 80px;
 }
 
-@keyframes slide{
+@keyframes slide {
 	from {
 		transform: translateX(0);
 	}
@@ -20,6 +20,6 @@
 }
 
 .logo-scroller {
-	animation: 10s slide infinite linear;
+	animation: 8s slide infinite linear;
 	display: inline-block;
 }
