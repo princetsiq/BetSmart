@@ -1,7 +1,7 @@
 import React from "react";
 import ImageCarousel from '../../components/ImageCarousel/ImageCarousel.jsx'
-import './Home.css';
-// import './Home.scss';
+// import './Home.css';
+import './Home.scss';
 
 const Home = () => {
 	return (
