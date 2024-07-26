@@ -1,9 +1,7 @@
-// $card-bg-color: #fffcf2;
-// $card-border-color: #fffcf2;
-$card-bg-color: #FAFAF5;
+$card-bg-color: #f7f7e9;
 $card-border-color: #FAFAF5;
-$card-hover-shadow: 0px 6px 6px rgba(0, 0, 0, 0.1);
-// $card-hover-shadow: 0px 6px 6px #999;
+$gray: #666;
+$card-hover-shadow: 0px 6px 6px #999;
 $team-logo-size: 55px;
 $font-bold: bold;
 $font-size: 18px;
@@ -20,13 +18,13 @@ $font-size: 18px;
   margin: 8px;
   text-align: center;
   box-shadow: $card-hover-shadow;
-  @include transition(transform, 400ms);
   display: flex;
 	flex-direction: row;
   align-items: center;
+  @include transition(transform, 400ms);
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 		cursor: pointer;
   }
 
@@ -72,11 +70,11 @@ $font-size: 18px;
 
   .vs {
     font-size: $font-size;
-    margin: 10px;
+    margin: 10px 10px;
   }
 
   .game-date {
     font-size: 16px;
-    color: #666;
+    color: $gray;
   }
 }

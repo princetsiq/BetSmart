@@ -4,12 +4,17 @@ import NavBar from '../NavBar/NavBar';
 
 const Layout = () => {
   return (
-    <div className="app">
-      <NavBar/>
-      <div className="page">
-        <Outlet />
-      </div>
-    </div>
+    // <div className="app">
+    //   <NavBar/>
+    //   <div className="page">
+    //     <Outlet />
+    //   </div>
+    // </div>
+
+    <>
+     <NavBar/>
+     <Outlet />
+    </>
   );
 };
 

@@ -3,8 +3,10 @@ import './Login.scss';
 
 const Login = () => {
   return (
-    <div className="login-container">
-      <h2>Login</h2>
+    <div classname="login">
+      <div className="login-container">
+      <h1>Log In</h1>
+      <h2>to continue to BetSmart</h2>
       <form className="form">
         <div className="input-div">
           <label htmlFor="email" className="label">Email</label>
@@ -23,6 +25,7 @@ const Login = () => {
           <a href="/sign-up"> Sign up</a>
         </div>
       </form>
+    </div>
     </div>
   );
 };

@@ -1,7 +1,9 @@
+$light-gray: #ccc;
+$cream: #fafaf5;
 $green: #426B1F;
 $white: #fff;
 $black: #000;
-$gray: #C2C2C2;
+$gray: #838383;
 $focus-shadow: rgba(40, 167, 69, 0.5);
 $focus-shadow-black: rgba(0, 0, 0, 0.5);
 $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -10,14 +12,51 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 16px;
 
   .games-grid {
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: center;
     display: grid;
-    gap: 16px;
+    gap: 1rem;
+    
   }
-  
+
+  .games-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .game-list-item {
+      display: flex;
+      align-items: center;
+      background: $cream;
+      border: 1px solid $gray;
+      padding: 10px;
+      border-radius: 8px;
+
+      .team-logo {
+        width: 40px;
+        height: 40px;
+        margin: 8px 8px;
+      }
+
+      .team-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 8px 8px;
+      }
+
+      .game-date {
+        margin-left: auto;
+        font-size: 16px;
+        color: $gray;
+      }
+    }
+  }
+
   .page-break {
     border: 0;
     height: 1px;
-    background: #ccc;
+    background: $light-gray;
     margin-bottom: 50px; 
   }
 }
@@ -26,7 +65,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: $property $duration ease;
 }
 
-.header {
+.game-header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -58,14 +97,14 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       white-space: nowrap;
       transition: 400ms;
     }
-  
+
     .default {
       @extend .button-base;
       background-color: $green;
       border: 0px;
       outline: 2px $green solid;
       outline-offset: -2px;
-      
+
       &:hover {
         transform: scale(1.05);
         background-color: transparent;
@@ -74,7 +113,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
           color: $green;
         }
       }
-    
+
       &:active {
         transform: scale(0.9); 
       }
@@ -86,15 +125,15 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin: 0px;
       }
     }
-    
-    .a-z, 
+
+    .a-z,
     .list-view {
       @extend .button-base;
       background-color: $white;
       border: 0px;
       outline: 2px $gray solid;
       outline-offset: -2px;
-    
+
       &:hover {
         background-color: darken($white, 10%);
         transform: scale(1.05);
@@ -103,7 +142,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
           color: $black;
         }
       }
-    
+
       &:active {
         background-color: darken($white, 10%);
         transform: scale(0.95);

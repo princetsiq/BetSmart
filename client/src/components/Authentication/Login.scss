@@ -1,84 +1,105 @@
-// $bg-light: #efefef;
 $bg-light: #FAFAF5;
 $bg-dark: #707070;
 $clr: #58bc82;
 $clr-alpha: rgba(92, 188, 130, 0.38);
 
-.login-container {
-  background-color: $bg-light;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: 0 auto;
-
-  .form {
+.login {
+  .login-container {
+    background-color: $bg-light;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-    max-width: 300px;
-  }
 
-  .input-div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  input[type="email"],
-  input[type="password"] {
-    border-radius: 0.5rem;
-    padding: 1rem 0.75rem;
-    width: 100%;
-    border: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: $clr-alpha;
-    outline: 2px solid $bg-dark;
-
-    &:focus {
-      outline: 2px solid $clr;
+    h1 {
+      margin: 8px 0px;
+      font-family: Inter, "Open Sans", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+      text-align: center;
     }
-  }
 
-  .label {
-    align-self: flex-start;
-    color: $clr;
-    font-weight: 600;
-  }
-
-  .submit {
-    padding: 1rem 0.75rem;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 3rem;
-    background-color: $bg-dark;
-    color: $bg-light;
-    border: none;
-    cursor: pointer;
-    transition: all 300ms;
-    font-weight: 600;
-    font-size: 0.9rem;
-
-    &:hover {
-      background-color: $clr;
-      color: $bg-dark;
+    h2 {
+      margin: 0px 0px 8px;
+      font-family: Inter, "Open Sans", sans-serif;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+      padding-left: 4px;
+      padding-right: 4px;
     }
-  }
 
-  .link-div {
-    text-decoration: none;
-    color: $bg-dark;
+    .form {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 300px;
+    }
 
-    a {
+    .input-div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      border-radius: 0.5rem;
+      padding: 1rem 0.75rem;
+      width: 100%;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: $clr-alpha;
+      outline: 2px solid $bg-dark;
+
+      &:focus {
+        outline: 2px solid $clr;
+      }
+    }
+
+    .label {
+      align-self: flex-start;
       color: $clr;
+      font-weight: 600;
+    }
+
+    .submit {
+      padding: 1rem 0.75rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 3rem;
+      background-color: $bg-dark;
+      color: $bg-light;
+      border: none;
+      cursor: pointer;
+      transition: all 300ms;
+      font-weight: 600;
+      font-size: 0.9rem;
+
+      &:hover {
+        background-color: $clr;
+        color: $bg-dark;
+      }
+    }
+
+    .link-div {
+      text-decoration: none;
+      color: $bg-dark;
+
+      a {
+        color: $clr;
+      }
     }
   }
 }

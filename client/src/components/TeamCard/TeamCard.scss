@@ -1,3 +1,12 @@
+$green: #426b1f;
+$light-green: #6ab04a;
+$white: #fff;
+$black: #000;
+$gray: #c2c2c2;
+$background: #f3f3e6;
+$btn-color: #6ab04a;
+$dark-gray: #999;
+
 @mixin transition($property, $duration) {
   transition: $property $duration ease;
 }
@@ -5,17 +14,21 @@
 .team-card-container {
   width: 15rem;
   border-radius: 1rem;
-  box-shadow: 0px 6px 6px #999;
+  box-shadow: 0px 6px 6px $dark-gray;
   display: flex;
   flex-direction: column;
-  margin: 0.5 rem;
-  background: #FAFAF5;
+  margin: 0.5rem;
+  background: $background;
   @include transition(transform, 400ms);
 
   &:hover {
     transform: scale(1.05);
     cursor: pointer;
   }
+}
+
+.team-card-body {
+  padding: 1rem;
 }
 
 .team-card-img {
@@ -25,10 +38,33 @@
 
 .team-card-title,
 .team-card-description {
-  margin: 0.5rem 5%;
+  margin: 0.5rem 0;
 
   &:hover {
     cursor: text;
+  }
+}
+
+.team-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.follow-button {
+  background: none;
+  border: none;
+  color: $gray;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    color: darken($gray, 10%);
+  }
+
+  &.followed {
+    color: $light-green;
   }
 }
 
@@ -37,8 +73,8 @@
   width: 90%;
   border-radius: 5px;
   padding: 0.5rem;
-  background-color: #6ab04a;
-  color: white;
+  background-color: $btn-color;
+  color: $white;
   text-decoration: none;
   margin: 0.5rem auto;
 }

@@ -1,48 +1,59 @@
-
 $green: #426b1f;
 $white: #fff;
 $black: #000;
 $gray: #c2c2c2;
-$focus-shadow: rgba(40, 167, 69, 0.5);
-$focus-shadow-black: rgba(0, 0, 0, 0.5);
-$button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+$cream: #f3f3e6;
+$focus-shadow: #28a74580;
+$focus-shadow-black: #00000080;
+$button-shadow: 0 2px 5px #0000001a;
 
-.followed-page {
+.teams-page {
   padding: 16px;
 
   .page-break {
     border: 0;
     height: 1px;
-    background: #ccc;
+    background: $gray;
     margin-bottom: 50px;
   }
-}
 
-.followed-page-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
+  .teams-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
 
-.followed-page-heading {
-  margin: 1rem 0;
-  font-family: "Merriweather", serif;
-  font-size: 2rem;
-  font-weight: 700;
-  position: relative;
+  .teams-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-  &::after {
-    content: "";
-    display: block;
-    width: 50%;
-    height: 2px;
-    background-color: black;
-    margin: 0.5rem auto;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -10px;
+    .team-list-item {
+      display: flex;
+      align-items: center;
+      background: $cream;
+      border: 1px solid $gray;
+      padding: 10px;
+      border-radius: 8px;
+
+      .team-logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+      }
+
+      .team-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-right: 8px;
+      }
+
+      .team-description {
+        font-size: 14px;
+        color: $gray;
+      }
+    }
   }
 }
 
@@ -50,7 +61,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: $property $duration ease;
 }
 
-.header {
+.teams-header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -80,7 +91,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       height: 40px;
       line-height: 1.5;
       white-space: nowrap;
-      transition: 400ms;
+      @include transition(transform, 400ms);
     }
 
     .default {
@@ -112,7 +123,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .a-z,
-    .list-view {
+    .list-view { 
       @extend .button-base;
       background-color: $white;
       border: 0px;
@@ -138,6 +149,44 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         color: $black;
         transition: 400ms;
         margin: 0px;
+      }
+    }
+
+    .followed-teams {
+      @extend .button-base;
+      background-color: $white;
+      border: 0px;
+      outline: 2px $gray solid;
+      outline-offset: -2px;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      &:active {
+        background-color: darken($white, 10%);
+        transform: scale(0.95);
+      }
+
+      &.highlighted {
+        background-color: $green;
+        outline: 2px solid $green;
+
+        &::before {
+          content: 'My Teams';
+          display: none;
+        }
+
+        &::after {
+          content: 'All Teams';
+          color: $white;
+        }
+      }
+
+      &:not(.highlighted) {
+        &::before {
+          content: 'My Teams';
+        }
       }
     }
   }
