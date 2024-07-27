@@ -1,20 +1,17 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import { useAuth } from '../Authentication/AuthContext';
 import NavBar from '../NavBar/NavBar';
+import LandingBar from '../NavBar/LandingBar';
 
 const Layout = () => {
-  return (
-    // <div className="app">
-    //   <NavBar/>
-    //   <div className="page">
-    //     <Outlet />
-    //   </div>
-    // </div>
+  const { isAuthenticated } = useAuth();
 
-    <>
-     <NavBar/>
-     <Outlet />
-    </>
+  return (
+    <div className="layout">
+      {(isAuthenticated && <NavBar/>) || <LandingBar/>}
+      <Outlet />
+    </div>
   );
 };
 

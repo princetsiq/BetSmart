@@ -1,0 +1,56 @@
+$green: #426b1f;
+$light-green: #6ab04a;
+$white: #fff;
+$black: #000;
+$gray: #c2c2c2;
+$background: #f3f3e6;
+$btn-color: #6ab04a;
+$dark-gray: #999;
+
+@mixin transition($property, $duration) {
+  transition: $property $duration ease;
+}
+
+.home-card-container {
+  width: 100%;
+	width: 175px;
+	height: 175px;
+  border-radius: 1rem;
+  box-shadow: 0px 6px 6px $dark-gray;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  background: $background;
+  @include transition(transform, 400ms);
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+}
+
+.home-card-img {
+  border-radius: 1rem 1rem 0 0;
+  width: 100%;
+  height: auto;
+}
+
+.home-card-title {
+  margin: 0.5rem 0;
+  text-align: center;
+
+  &:hover {
+    cursor: text;
+  }
+}
+
+.home-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+
+	h2 {
+		font-size: 12px;
+	}
+}

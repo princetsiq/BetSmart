@@ -17,6 +17,13 @@ $button-shadow: 0 2px 5px #0000001a;
     margin-bottom: 50px;
   }
 
+  .no-teams-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 20px;
+  }  
+
   .teams-grid {
     display: flex;
     flex-wrap: wrap;
@@ -158,35 +165,20 @@ $button-shadow: 0 2px 5px #0000001a;
       border: 0px;
       outline: 2px $gray solid;
       outline-offset: -2px;
+      min-width: 103px;
 
       &:hover {
         transform: scale(1.05);
       }
 
       &:active {
-        background-color: darken($white, 10%);
         transform: scale(0.95);
       }
 
       &.highlighted {
         background-color: $green;
+        color: $white;
         outline: 2px solid $green;
-
-        &::before {
-          content: 'My Teams';
-          display: none;
-        }
-
-        &::after {
-          content: 'All Teams';
-          color: $white;
-        }
-      }
-
-      &:not(.highlighted) {
-        &::before {
-          content: 'My Teams';
-        }
       }
     }
   }

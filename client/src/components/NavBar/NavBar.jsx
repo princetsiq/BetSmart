@@ -1,17 +1,36 @@
 import React from 'react';
-import { Link, useResolvedPath, useMatch } from 'react-router-dom';
+import { Link, useResolvedPath, useMatch, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Authentication/AuthContext';
 import './NavBar.scss';
-// import './NavBar.css';
 
 const NavBar = () => {
-	return(
+	const { logout } = useAuth();
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+	return (
 		<nav className='navbar'>
 			<Link to='/' className='site-title'>BetSmart</Link>
 			<ul className="pages">
-				<CustomLink to="/games">Games</CustomLink>
-				<CustomLink to="/teams">Teams</CustomLink>
-				<CustomLink to="/who-we-are">Who We Are</CustomLink>
-				<CustomLink to="/my-profile">My Profile</CustomLink>
+				<div className="home-buttons">
+					<CustomLink to="/games">Games</CustomLink>
+				</div>
+				<div className="home-buttons">
+					<CustomLink to="/teams">Teams</CustomLink>
+				</div>
+				<div className="home-buttons">
+					<CustomLink to="/who-we-are">Who We Are</CustomLink>
+				</div>
+				<div className="home-buttons">
+					<CustomLink to="/my-profile">My Profile</CustomLink>
+				</div>
+				<div className="home-buttons log-out">
+					<Link onClick={handleLogout}>Logout</Link>
+				</div>
 			</ul>
 		</nav>
 	);
