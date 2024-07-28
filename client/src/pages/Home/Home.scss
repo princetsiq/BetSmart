@@ -1,11 +1,184 @@
-.header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-sizing: border-box;
-	font-weight: 200;
+$green: #426b1f;
+$white: #fff;
+$black: #000;
+$gray: #c2c2c2;
+$cream: #f3f3e6;
+$focus-shadow: #28a74580;
+$focus-shadow-black: #00000080;
+$button-shadow: 0 2px 5px #0000001a;
 
-	i {
-	padding: 0 .5rem
+@mixin transition($property, $duration) {
+  transition: $property $duration ease;
+}
+
+body {
+  overflow-x: hidden; 
+}
+
+.home {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.header {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		font-weight: 200;
+		font-size: 40px;
+		margin-top: 5%;
+		margin-bottom: 3%;
+		min-width: 140px;
+		max-width: 645px;
+
+		i {
+			padding: 0 .5rem
+		}
+	}
+
+	.button-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		.button-base {
+			border-radius: 6px;
+			padding: 5px 15px;
+			font-size: 16px;
+			cursor: pointer;
+			height: 40px;
+			line-height: 1.5;
+			white-space: nowrap;
+			@include transition(transform, 400ms);
+		}
+
+		.home-button {
+			@extend .button-base;
+			color: $white;
+			background-color: $green;
+			border: 0px;
+			outline: 2px $green solid;
+			outline-offset: -2px;
+
+			&:hover {
+				transform: scale(1.05);
+				background-color: transparent;
+				color: $green;
+
+				.text {
+					color: $green;
+				}
+			}
+
+			&:active {
+				transform: scale(0.9);
+			}
+
+			.text {
+				font-weight: 500;
+				color: $white;
+				transition: 400ms;
+				margin: 0px;
+			}
+		}
+	}
+
+	.home-container {
+		display: flex;
+		flex-direction: column;
+
+		.info-container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+
+			.home-grid {
+				height: 500px;
+				width: 500px;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				align-content: center;
+				justify-content: center;
+			}
+
+			.teams-list {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+				height: 500px;
+				width: 500px;
+				flex-wrap: wrap;
+		
+				.team-list-item {
+					display: flex;
+					align-items: center;
+					background: $cream;
+					border: 1px solid $gray;
+					padding: 10px;
+					border-radius: 8px;
+					width: 150px;
+					height: 150px;
+		
+					.team-logo {
+						width: 40px;
+						height: 40px;
+						margin-right: 8px;
+					}
+		
+					.team-name {
+						font-size: 14px;
+						font-weight: 400;
+						// margin-right: 8px;
+					}
+				}
+			}
+
+			.home-img {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 500px;
+				width: 500px;
+
+				.circle-img {
+					height: 400px;
+					width: 400px;
+					border-radius: 50%;
+				}
+			}
+		}
+
+		.what-we-believe {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			padding: 20px;
+			box-sizing: border-box;
+			width: 100%;
+		
+			.message {
+				max-width: 600px;
+				width: 100%;
+				text-align: left;
+		
+				h1 {
+					text-align: center;
+					margin-bottom: 20px;
+				}
+		
+				.part-1,
+				.part-2 {
+					margin-bottom: 20px;
+					p {
+						margin: 0;
+						line-height: 1.6;
+					}
+				}
+			}
+		}
 	}
 }

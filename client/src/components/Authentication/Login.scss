@@ -1,104 +1,253 @@
 $bg-light: #FAFAF5;
+$light-gray: #b7b7b6;
 $bg-dark: #707070;
 $clr: #58bc82;
-$clr-alpha: rgba(92, 188, 130, 0.38);
+$white: #ffffff;
+$submit: #12320b;
+$link: #2a751a;
+$black: #000000;
+
+@mixin transition($property, $duration) {
+  transition: $property $duration ease;
+}
 
 .login {
+  .banner-cover {
+    height: 85px;
+    position: relative;
+    z-index: 1;
+    background-color: $black;
+
+    .cover-components {
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin: 0px auto;
+      max-width: 1440px;
+
+      .component-1 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .component-2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .banner-title {
+          color: $white;
+          font-size: 3rem;
+          text-decoration: none;
+          font-family: 'logoFont', sans-serif;
+          font-weight: 100;
+          @include transition(transform, 400ms);
+      
+          &:active {
+            transform: scale(0.95);
+          }
+        }
+      }
+
+      .component-3 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .button-base {
+          border-radius: 8px;
+          padding: 5px 15px;
+          font-size: 12px;
+          cursor: pointer;
+          margin-right: 20px;
+          height: 40px; 
+          line-height: 1.5; 
+          white-space: nowrap;
+          transition: 400ms;
+        }
+    
+        .banner-sign-up {
+          @extend .button-base;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: $black;
+          border: 0px;
+          outline: 2px $white solid;
+          outline-offset: -2px;
+          color: $white;
+          height: 40%;
+          min-width: 73px;
+          text-decoration: none;
+    
+          &:hover {
+            color: darken($white, 20%);
+            outline: 2px darken($white, 20%) solid;
+          }
+    
+          &:active {
+            transform: scale(0.9); 
+          }
+        }
+      }
+    }
+  }
+
   .login-container {
-    background-color: $bg-light;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: 0 auto;
+    width: 100%;
+    margin: 5% auto;
+
+    h1, h2 {
+      text-align: center;
+      font-family: Inter, "Open Sans", sans-serif;
+    }
 
     h1 {
-      margin: 8px 0px;
-      font-family: Inter, "Open Sans", sans-serif;
       font-weight: 600;
       font-size: 24px;
       line-height: 32px;
-      text-align: center;
+      margin-bottom: 10px;
     }
 
     h2 {
-      margin: 0px 0px 8px;
-      font-family: Inter, "Open Sans", sans-serif;
       font-weight: normal;
       font-size: 14px;
       line-height: 24px;
-      text-align: center;
-      padding-left: 4px;
-      padding-right: 4px;
+      margin-bottom: 20px;
     }
 
-    .form {
-      margin: 0 auto;
+    form {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 1rem;
-      width: 100%;
-      max-width: 300px;
-    }
 
-    .input-div {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
+      .form-group {
+        position: relative;
+        margin-bottom: 20px;
 
-    input[type="email"],
-    input[type="password"] {
-      border-radius: 0.5rem;
-      padding: 1rem 0.75rem;
-      width: 100%;
-      border: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background-color: $clr-alpha;
-      outline: 2px solid $bg-dark;
+        .form-label {
+          position: absolute;
+          top: -6px;
+          left: 10px;
+          background: $white;
+          padding: 0 5px;
+          font-size: 12px;
+          color: $bg-dark;
+        }
 
-      &:focus {
-        outline: 2px solid $clr;
+        .form-input {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid $light-gray;
+          font-family: Inter, "Open Sans", sans-serif;
+          border-radius: 8px;
+          font-size: 14px;
+          background-color: $white;
+          outline: none;
+        
+          &:hover {
+            outline: 1px solid $bg-dark;
+          }
+  
+          &:focus {
+            outline: 2px solid $clr;
+          }
+        }
+
+        .break {
+          border: 0;
+          height: 1px;
+          background: $light-gray;
+          margin-bottom: 50px; 
+        }
       }
-    }
 
-    .label {
-      align-self: flex-start;
-      color: $clr;
-      font-weight: 600;
-    }
+      .password-container {
+        .form-input {
+          padding-right: 40px; 
+        }
 
-    .submit {
-      padding: 1rem 0.75rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      border-radius: 3rem;
-      background-color: $bg-dark;
-      color: $bg-light;
-      border: none;
-      cursor: pointer;
-      transition: all 300ms;
-      font-weight: 600;
-      font-size: 0.9rem;
+        .toggle-password {
+          background: none;
+          border: none;
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          padding: 5px;
+          display: flex;
+          align-items: center;
 
-      &:hover {
-        background-color: $clr;
-        color: $bg-dark;
+          svg {
+            height: 80%;
+            width: 80%;
+          }
+        }
+      
+        &.no-padding {
+          margin-bottom: 0;
+        }
       }
-    }
 
-    .link-div {
-      text-decoration: none;
-      color: $bg-dark;
+      .link-div {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
 
-      a {
-        color: $clr;
+        a {
+          color: $link;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+
+        &.forgot-password {
+          text-align: right;
+        }
+
+        &.no-account {
+          padding-top: 12px;
+          padding-bottom: 24px;
+        }
+      }
+
+      .submit-position {
+        display: flex;
+        justify-content: center;
+
+        .login-btn {
+          display: flex;
+          justify-content: center;
+          padding: 1rem 0.75rem;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          border-radius: 3rem;
+          background-color: $submit;
+          color: $bg-light;
+          border: none;
+          cursor: pointer;
+          transition: all 300ms;
+          font-weight: 600;
+          font-size: 0.9rem;
+          max-width: 70%;
+
+          &:hover {
+            opacity: 80%;
+          }
+
+          &:active {
+            transform: scale(0.95);
+          }
+        }
       }
     }
   }

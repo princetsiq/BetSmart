@@ -3,7 +3,7 @@ import GameCard from '../../components/GameCard/GameCard';
 import AnimateLetters from '../../components/AnimateLetters/AnimateLetters';
 import './Game.scss';
 
-const GamesPage = ({ games = [] }) => {
+const Games = ({ games = [] }) => {
   const getCardsPerRow = (width) => {
     if (width > 900) return 3;
     if (width > 600) return 2;
@@ -98,4 +98,4 @@ const GamesPage = ({ games = [] }) => {
   );
 };
 
-export default GamesPage;
+export default Games;
