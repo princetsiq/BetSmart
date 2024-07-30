@@ -7,14 +7,15 @@ const NavBar = () => {
 	const { logout } = useAuth();
 	const navigate = useNavigate();
 
-	const handleLogout = () => {
+	const handleLogout = (e) => {
+		e.preventDefault();
+		navigate("/");
     logout();
-    navigate('/');
   };
 
 	return (
 		<nav className='navbar'>
-			<Link to='/' className='site-title'>BetSmart</Link>
+			<Link to="/" className='site-title'>BetSmart</Link>
 			<ul className="pages">
 				<div className="home-buttons">
 					<CustomLink to="/games">Games</CustomLink>

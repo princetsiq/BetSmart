@@ -5,14 +5,16 @@ const GameCard = ({ game }) => {
   return (
     <div className="game-card">
       <div className="team team-left">
-        <img src={game.team1Logo} alt={`${game.team1} logo`} className="team-logo" />
+        <img src={game.homeTeamLogo} alt={`${game.homeTeamName} logo`} className="team-logo" />
+        <span className="team-name">{game.homeTeamName}</span>
       </div>
       <div className="game-details">
         <span className="vs">vs</span>
-        <p className="game-date">{game.date}</p>
+        <p className="game-date">{game.gameDate}</p>
       </div>
       <div className="team team-right">
-        <img src={game.team2Logo} alt={`${game.team2} logo`} className="team-logo" />
+        <span className="team-name">{game.awayTeamName}</span>
+        <img src={game.awayTeamLogo} alt={`${game.homeTeamName} logo`} className="team-logo" />
       </div>
     </div>
   );

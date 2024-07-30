@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import GameCard from '../../components/GameCard/GameCard';
 import AnimateLetters from '../../components/AnimateLetters/AnimateLetters';
-import './Game.scss';
+import './Games.scss';
 
-const Games = ({ games = [] }) => {
+const Games = () => {
   const getCardsPerRow = (width) => {
     if (width > 900) return 3;
     if (width > 600) return 2;
@@ -11,10 +11,47 @@ const Games = ({ games = [] }) => {
   };
 
   const [view, setView] = useState('grid');
-  const [sortedGames, setSortedGames] = useState(games);
+  const [games, setGames] = useState([]);
+  const [sortedGames, setSortedGames] = useState([]);
   const [letterClass, setLetterClass] = useState('text-animate');
   const [cardsPerRow, setCardsPerRow] = useState(getCardsPerRow(window.innerWidth));
   const [sortOrder, setSortOrder] = useState('default'); 
+  const [page, setPage] = useState(1);
+  const pageSize = 9;
+
+  useEffect(() => {
+    fetchGames();
+  }, [page]);
+
+  const fetchGames = () => {
+    fetch(`http://localhost:5002/api/nba/games?page=${page}&page_size=${pageSize}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        setGames(prevGames => [...prevGames, ...data]);
+        setSortedGames(prevGames => [...prevGames, ...data]);
+      })
+      .catch(error => console.error('Error fetching games:', error));
+  };
+
+  // useEffect(() => {
+  //   fetch('http://localhost:5002/api/nba/games')
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //       return response.json();
+  //     })
+  //     .then(data => {
+  //       setGames(data);
+  //       setSortedGames(data);
+  //     })
+  //     .catch(error => console.error('Error fetching teams:', error));
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,7 +73,7 @@ const Games = ({ games = [] }) => {
   useEffect(() => {
     let sorted = [...games];
     if (sortOrder === 'a-z') {
-      sorted.sort((a, b) => a.team1.localeCompare(b.team1));
+      sorted.sort((a, b) => a.HOME_TEAM_NAME.localeCompare(b.HOME_TEAM_NAME));
     }
     setSortedGames(sorted);
   }, [sortOrder, games]);
@@ -51,12 +88,12 @@ const Games = ({ games = [] }) => {
         <div className="games-list">
           {sortedGames.map((game, index) => (
             <div key={index} className="game-list-item">
-              <img src={game.team1Logo} alt={`${game.team1} logo`} className="team-logo" />
-              <span className="team-name">{game.team1}</span> 
-              <p>vs </p> 
-              <span className="team-name">{game.team2}</span>
-              <img src={game.team2Logo} alt={`${game.team2} logo`} className="team-logo" />
-              <span className="game-date">{game.date}</span>
+              <img src={game.HOME_TEAM_LOGO_PATH} alt={`${game.HOME_TEAM_NAME} logo`} className="team-logo" />
+              <span className="team-name">{game.HOME_TEAM_NAME}</span>
+              <p>vs </p>
+              <span className="team-name">{game.AWAY_TEAM_NAME}</span>
+              <img src={game.AWAY_TEAM_LOGO_PATH} alt={`${game.AWAY_TEAM_NAME} logo`} className="team-logo" />
+              <span className="game-date">{game.GAME_DATE}</span>
             </div>
           ))}
         </div>
@@ -66,7 +103,16 @@ const Games = ({ games = [] }) => {
     return (
       <div className="games-grid" style={{ gridTemplateColumns: `repeat(${cardsPerRow}, 1fr)` }}>
         {sortedGames.map((game, index) => (
-          <GameCard key={index} game={game} />
+          <GameCard 
+            key={index} 
+            game={{
+              homeTeamLogo: game.HOME_TEAM_LOGO_PATH,
+              awayTeamLogo: game.AWAY_TEAM_LOGO_PATH,
+              homeTeamName: game.HOME_TEAM_ABBREVIATION,
+              awayTeamName: game.AWAY_TEAM_ABBREVIATION,
+              gameDate: game.GAME_DATE
+            }} 
+          />
         ))}
       </div>
     );
@@ -94,6 +140,11 @@ const Games = ({ games = [] }) => {
       </div>
       <hr className="page-break" />
       {renderGames()}
+      <div className="load-more-container">
+        <button className="load-more" onClick={() => setPage(prevPage => prevPage + 1)}>
+          <p className="text">Load More Games</p>
+        </button>
+      </div>
     </div>
   );
 };
