@@ -1,25 +1,62 @@
-.logo-scroller img {
-	height: 80px;
-	margin: 0 80px;
-}
+// .logo-scroller img {
+// 	height: 80px;
+// 	margin: 0 80px;
+// }
 
-@keyframes slide {
-	from {
-		transform: translateX(0);
-	}
+// @keyframes slide {
+// 	from {
+// 		transform: translateX(0);
+// 	}
 
-	to {
-		transform: translateX(-100%);
-	}
-}
+// 	to {
+// 		transform: translateX(-100%);
+// 	}
+// }
 
-.logos {
-	overflow: hidden;
-	padding: 45px 0; 
-	white-space: nowrap; 
-}
+// .logos {
+// 	overflow: hidden;
+// 	padding: 45px 0; 
+// 	white-space: nowrap; 
+// }
 
-.logo-scroller {
-	animation: 8s slide infinite linear;
-	display: inline-block;
+// .logo-scroller {
+// 	animation: 8s slide infinite linear;
+// 	display: inline-block;
+// }
+
+.image-carousel {
+	display: flex;
+	align-items: center;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+	height: 120px;
+	padding: 80px 0;
+
+  .carousel-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+  }
+
+  .carousel-item {
+    flex: 0 0 auto;
+    width: 140px;
+    margin: 0 10px;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100px * 30));
+    }
+  }
 }

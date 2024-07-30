@@ -59,8 +59,9 @@ const Home = ({ teams = []}) => {
           {isAuthenticated ? "Browse Games" : "Log In"}
         </button>
       </div>
+			<ImageCarousel />
 			<div className="home-container">
-				<ImageCarousel />
+				{/* <ImageCarousel /> */}
 				<div className="info-container">
 					<div className="grid-container">
 						<div className="home-grid" style={{ gridTemplateColumns: `repeat(${cardsPerRow}, 1fr)` }}>
@@ -72,15 +73,6 @@ const Home = ({ teams = []}) => {
 								/>
 							))}
 						</div>
-
-						{/* <div className="teams-list">
-							{teams.map((team, index) => (
-							<div key={index} className="team-list-item">
-								<img src={team.img} alt={`${team.title} logo`} className="team-logo" />
-								<span className="team-name">{team.title}</span>
-							</div>
-							))}
-						</div> */}
 					</div>
 					<div className="home-img">
 						<img src={homeImg} alt="home" className="circle-img" />
