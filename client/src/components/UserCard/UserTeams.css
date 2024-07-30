@@ -1,0 +1,27 @@
+.user-team {
+  border-radius: 2%;
+  background-color: rgb(40, 197, 145);
+  width: 1000px;
+  height: 500px;
+  margin-left: 20px;
+  box-shadow: -10px 16px rgb(2, 44, 44);
+  margin-top: 40px;
+  position: relative;
+}
+
+.user-team h3 {
+  margin-top: 3px;
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 47px;
+  color: white;
+}
+
+.team-header {
+  width: 999px;
+  height: 75px;
+  background: linear-gradient(to left, #094925, #218f76);
+  position: absolute;
+  top: -1px;
+  left: 0px;
+}
