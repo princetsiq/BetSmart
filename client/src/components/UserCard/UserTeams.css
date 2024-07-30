@@ -25,3 +25,18 @@
   top: -1px;
   left: 0px;
 }
+
+.teams {
+  overflow: hidden;
+  display: grid; /* Use grid for layout */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Adjust the size and number of columns */
+  gap: 10px; /* Adjust the gap between cards */
+  padding: 85px 20px 20px; /* Adjust padding to account for header and spacing */
+}
+
+.teams-grid {
+  display: contents; /* Ensures that the children use the parent grid settings */
+}
