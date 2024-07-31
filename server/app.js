@@ -36,7 +36,7 @@ const callPythonScript = (scriptName, args = []) => {
   });
 };
 
-app.get('/api/nba/teams', async (req, res) => {
+app.get('/api/nba/teams', async (_req, res) => {
   try {
     const teams = await callPythonScript('fetch_nba_data.py', ['teams']);
     res.json(teams);
@@ -46,7 +46,20 @@ app.get('/api/nba/teams', async (req, res) => {
   }
 });
 
-// app.get('/api/nba/games', async (req, res) => {
+app.get('/api/nba/seasons', async (_req, res) => {
+  try {
+    const seasons = [
+      "2013-14", "2014-15", "2015-16", "2016-17", 
+      "2017-18", "2018-19", "2019-20", "2020-21", 
+      "2021-22", "2022-23", "2023-24"
+    ];
+    res.json(seasons);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch seasons' });
+  }
+});
+
+// app.get('/api/nba/games', async (_req, res) => {
 //   try {
 //     const games = await callPythonScript('fetch_nba_data.py', ['games']);
 //     res.json(games);
@@ -57,11 +70,10 @@ app.get('/api/nba/teams', async (req, res) => {
 // });
 
 app.get('/api/nba/games', async (req, res) => {
-  const page = parseInt(req.query.page, 10) || 1;
-const pageSize = parseInt(req.query.page_size, 10) || 9;
-
+  const { season, seasonType } = req.query;
+  console.log(req.query);
   try {
-    const games = await callPythonScript('fetch_nba_data.py', ['games', page, pageSize]);
+    const games = await callPythonScript('fetch_nba_data.py', ['games', season, seasonType]);
     res.json(games);
   } catch (error) {
     console.error(`Error fetching games: ${error}`);
