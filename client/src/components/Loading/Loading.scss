@@ -1,0 +1,88 @@
+// .loading {
+//     display: flex;
+//     justify-content: center;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     border-radius: 50%;
+//     border-top-color: var(--new-leaf-green);
+//     animation: spinloader 0.8s linear infinite;
+//   }
+  
+//   .loading-xsmall {
+//     width: 1rem;
+//     height: 1rem;
+//   }
+  
+//   .loading-small {
+//     width: 2rem;
+//     height: 2rem;
+//   }
+  
+//   .loading-medium {
+//     width: 3rem;
+//     height: 3rem;
+//   }
+  
+//   .loading-large {
+//     width: 4rem;
+//     height: 4rem;
+//   }
+  
+//   .loading-thin {
+//     border: 2px solid;
+//   }
+  
+//   .loading-thicc {
+//     border: 4px solid;
+//   }
+  
+//   .loading-extra-thicc {
+//     border: 8px solid;
+//   }
+  
+//   @keyframes spinloader {
+//     to {
+//       transform: rotate(1turn);
+//     }
+//   }  
+
+.loading-bubbles {
+  display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+  .bubble {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: #4caf50; 
+    animation: wave 1.5s infinite ease-in-out;
+  }
+
+  .bubble1 {
+    animation-delay: -0.3s;
+  }
+
+  .bubble2 {
+    animation-delay: -0.15s;
+  }
+
+  .bubble3 {
+    animation-delay: 0s;
+  }
+
+  @keyframes wave {
+    0%, 60%, 100% {
+      transform: scale(0);
+    }
+    30% {
+      transform: scale(1);
+    }
+  }
+}  

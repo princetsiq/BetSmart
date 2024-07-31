@@ -78,21 +78,21 @@ const teamsData = [
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="login" element={<Login />} />
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home teams={teamsData} />} />
-            <Route path="games" element={<Games />} />
-            <Route path="teams" element={<Teams />} />
-            <Route path="who-we-are" element={<WhoWeAre />} />
-            <Route path="my-profile" element={<MyProfile />} />
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+    // <AuthProvider>
+    <Router>
+      <Routes>
+        <Route path="sign-up" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home teams={teamsData} />} />
+          <Route path="games" element={<Games />} />
+          <Route path="teams" element={<Teams />} />
+          <Route path="who-we-are" element={<WhoWeAre />} />
+          <Route path="my-profile" element={<MyProfile />} />
+        </Route>
+      </Routes>
+    </Router>
+    // </AuthProvider>
   );
 };
 

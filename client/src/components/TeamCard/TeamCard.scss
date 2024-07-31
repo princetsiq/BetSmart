@@ -12,6 +12,7 @@ $dark-gray: #999;
 }
 
 .team-card-container {
+  justify-content: space-between;
   width: 15rem;
   border-radius: 1rem;
   box-shadow: 0px 6px 6px $dark-gray;
@@ -70,6 +71,8 @@ $dark-gray: #999;
 }
 
 .team-card-btn {
+  align-self: flex-end;
+  margin-top: auto;
   text-align: center;
   width: 90%;
   border-radius: 5px;
