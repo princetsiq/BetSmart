@@ -4,14 +4,14 @@ import { useAuth } from '../Authentication/AuthContext';
 import './NavBar.scss';
 
 const NavBar = () => {
-	const { logout } = useAuth();
-	const navigate = useNavigate();
+	// const { logout } = useAuth();
+	// const navigate = useNavigate();
 
-	const handleLogout = (e) => {
-		e.preventDefault();
-		navigate("/");
-    logout();
-  };
+	// const handleLogout = (e) => {
+	// 	e.preventDefault();
+	// 	navigate("/");
+  //   logout();
+  // };
 
 	return (
 		<nav className='navbar'>
@@ -30,7 +30,7 @@ const NavBar = () => {
 					<CustomLink to="/my-profile">My Profile</CustomLink>
 				</div>
 				<div className="home-buttons log-out">
-					<Link onClick={handleLogout}>Logout</Link>
+					{/* <Link onClick={handleLogout}>Logout</Link> */}
 				</div>
 			</ul>
 		</nav>

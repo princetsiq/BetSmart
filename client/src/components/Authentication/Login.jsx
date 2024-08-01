@@ -5,18 +5,18 @@ import './Login.scss';
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const { login } = useAuth();
-  const navigate = useNavigate();
+  // const { login } = useAuth();
+  // const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    login();
-    navigate('/');
-  };
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   login();
+  //   navigate('/');
+  // };
 
   return (
     <div className="login">
@@ -73,7 +73,8 @@ const Login = () => {
             <a href="#">Forgot password?</a>
           </div>
           <div className="submit-position">
-            <button type="submit" className="login-btn" onClick={handleLogin}>Log In</button>
+            {/* <button type="submit" className="login-btn" onClick={handleLogin}>Log In</button> */}
+            <button type="submit" className="login-btn">Log In</button>
           </div>
           <div className="link-div no-account">
             Don't have an account?

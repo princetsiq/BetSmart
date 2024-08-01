@@ -4,12 +4,24 @@ import { useAuth } from '../Authentication/AuthContext';
 import NavBar from '../NavBar/NavBar';
 import LandingBar from '../NavBar/LandingBar';
 
+// const Layout = () => {
+//   const { isAuthenticated } = useAuth();
+
+//   return (
+//     <div className="layout">
+//       {(isAuthenticated && <NavBar/>) || <LandingBar/>}
+//       <Outlet />
+//     </div>
+//   );
+// };
+
 const Layout = () => {
-  const { isAuthenticated } = useAuth();
+  // const { isAuthenticated } = useAuth();
 
   return (
     <div className="layout">
-      {(isAuthenticated && <NavBar/>) || <LandingBar/>}
+      {/* {(isAuthenticated && <NavBar/>) || <LandingBar/>} */}
+      <NavBar/>
       <Outlet />
     </div>
   );

@@ -8,7 +8,8 @@ import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
 import Home from './pages/Home/Home';
 import MyProfile from './pages/MyProfile/MyProfile';
 import Teams from './pages/Teams/Teams';
-import { AuthProvider } from './components/Authentication/AuthContext';
+import Players from './pages/Players/Players';
+// import { AuthProvider } from './components/Authentication/AuthContext';
 
 
 import gsw from "./assets/teams/gsw.png";
@@ -39,20 +40,20 @@ import ptb from "./assets/teams/ptb.png";
 //   "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.si.com%2Ffannation%2Fnba%2Ffastbreak%2Fex-miami-heat-star-victor-oladipo-reacts-to-tyler-herro-instagram-post&psig=AOvVaw1wcDI36aN3N39DwZ1qEn3v&ust=1721510356964000&source=images&cd=vfe&opi=89978449&ved=0CBUQjhxqFwoTCOiIlPCDtIcDFQAAAAAdAAAAABAJ";
 
 const teamsData = [
+  // {
+  //   id: 1,
+  //   img: gsw,
+  //   title: "Golden State Warriors",
+  //   // description: placeholderDesc,
+  //   // link: pLink,
+  // },
   {
-    id: 1,
-    img: gsw,
-    title: "Golden State Warriors",
+    id: 5,
+    img: ptb, 
+    title: "Portland Trail Blaizers",
     // description: placeholderDesc,
     // link: pLink,
   },
-  // {
-  //   id: 5,
-  //   img: ptb, 
-  //   title: "Portland Trail Blaizers",
-  //   description: placeholderDesc,
-  //   link: pLink,
-  // },
   {
     id: 3,
     img: nyk, 
@@ -78,21 +79,22 @@ const teamsData = [
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="sign-up" element={<SignUp />} />
-          <Route path="login" element={<Login />} />
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home teams={teamsData} />} />
-            <Route path="games" element={<Games />} />
-            <Route path="teams" element={<Teams />} />
-            <Route path="who-we-are" element={<WhoWeAre />} />
-            <Route path="my-profile" element={<MyProfile />} />
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+    // <AuthProvider>
+    <Router>
+      <Routes>
+        <Route path="sign-up" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home teams={teamsData} />} />
+          <Route path="games" element={<Games />} />
+          <Route path="teams" element={<Teams />} />
+          <Route path="players" element={<Players />} />
+          <Route path="who-we-are" element={<WhoWeAre />} />
+          <Route path="my-profile" element={<MyProfile />} />
+        </Route>
+      </Routes>
+    </Router>
+    // </AuthProvider>
   );
 };
 
