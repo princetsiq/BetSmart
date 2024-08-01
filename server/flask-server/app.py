@@ -4,7 +4,6 @@ import pickle
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-# Load the trained model
 with open(r'C:\Users\Jaden\BetSmart\server\flask-server\model.pkl', 'rb') as f:
     model = pickle.load(f)
 
@@ -21,7 +20,6 @@ def predict():
         data = request.get_json(force=True)
         features = data['features']
         
-        # Create a DataFrame with the same column names as the training set
         feature_names = ['PTS', 'FGM', 'FGA', 'FG%', '3PM', '3PA', '3P%', 'FTM', 'FTA', 'FT%', 'OREB', 'DREB', 'REB', 'AST', 'TOV', 'STL', 'BLK', 'PF', '+/-']
         features_df = pd.DataFrame([features], columns=feature_names)
         
