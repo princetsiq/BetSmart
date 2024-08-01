@@ -82,8 +82,6 @@ app.get("/api/nba/games", async (req, res) => {
       "games",
       season,
       seasonType,
-      page,
-      pageSize,
     ]);
     res.json(games);
   } catch (error) {
