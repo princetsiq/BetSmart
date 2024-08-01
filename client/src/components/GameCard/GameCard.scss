@@ -1,15 +1,18 @@
 $card-bg-color: #f7f7e9;
-$card-border-color: #FAFAF5;
+$card-border-color: #fafaf5;
 $gray: #666;
 $card-hover-shadow: 0px 6px 6px #999;
 $font-bold: bold;
 $font-size: 18px;
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
 
 @mixin transition($property, $duration) {
   transition: $property $duration ease;
 }
 
 .game-card {
+  font-family: "Bebas Neue";
   background: $card-bg-color;
   border: 1px solid $card-border-color;
   border-radius: 8px;
@@ -18,49 +21,51 @@ $font-size: 18px;
   text-align: center;
   box-shadow: $card-hover-shadow;
   display: flex;
-	flex-direction: row;
+  flex-direction: row;
   align-items: center;
   @include transition(transform, 400ms);
 
   &:hover {
     transform: scale(1.1);
-		cursor: pointer;
+    cursor: pointer;
   }
 
-	.game-details {
+  .game-details {
     font-size: clamp(14px, 2vw, 18px);
     margin-bottom: 8px;
 
     &:hover {
       cursor: text;
     }
-	}
+  }
 
   .team {
     display: flex;
     align-items: center;
-		margin-top: 8px;
+    margin-top: 8px;
     margin-bottom: 8px;
-		margin-left: 10px;
-		margin-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &.team-left {
-			flex: 1;
+      flex: 1;
       justify-content: flex-start;
-			display: flex;
+      display: flex;
 
       img {
         padding-right: 10px;
+        border-radius: 20%;
       }
     }
 
     &.team-right {
-			flex: 1;
+      flex: 1;
       justify-content: flex-end;
-			display: flex;
+      display: flex;
 
       img {
         padding-left: 10px;
+        border-radius: 20%;
       }
     }
 
@@ -84,4 +89,9 @@ $font-size: 18px;
     font-size: 16px;
     color: $gray;
   }
+}
+
+.game-card-wrap {
+  display: flex;
+  font-family: "Bebas Neue";
 }

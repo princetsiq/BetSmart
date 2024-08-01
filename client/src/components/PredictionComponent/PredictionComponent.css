@@ -1,0 +1,19 @@
+.prediction-result {
+  width: auto;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgba(0, 128, 0, 0.315);
+  border-radius: 3px;
+  background-color: #eaffea;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.loading-message {
+  font-style: italic;
+  color: #666;
+}
+
+.score {
+  text-align: center;
+}
