@@ -1,8 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./TeamCard.scss";
-import AnimatedButton from "../AnimatedButton/AnimatedButton";
 
 const TeamCard = (props) => {
+  const navigate = useNavigate();
+
+  const handleViewTeamClick = () => {
+    navigate(`/players?teamId=${props.id}&teamName=${encodeURIComponent(props.title)}`);
+  };
+
   return (
     <div className="team-card-container">
       <div className="team-card-body">
@@ -30,8 +36,10 @@ const TeamCard = (props) => {
           <p className="team-card-description">{props.description}</p>
         )}
       </div>
-      {props.link && (
-        <AnimatedButton link={props.link}>View Team</AnimatedButton>
+      {props.id && (
+        <button className="view-team" onClick={handleViewTeamClick}>
+          View Team
+        </button>
       )}
     </div>
   );

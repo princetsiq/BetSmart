@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import '../ImageCarousel/ImageCarousel.scss'
 
 const logos = [
@@ -36,12 +36,51 @@ const logos = [
 
 const ImageCarousel = () => {
   const trackRef = useRef(null);
+  // const [logos, setLogos] = useState([]);
+
+  // useEffect(() => {
+  //   fetch('http://localhost:5002/api/nba/logos')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const logosArray = Object.values(data).filter(logo => logo !== null);
+  //       setLogos(logosArray);
+  //     })
+  //     .catch(error => console.error('Error fetching logos:', error));
+  // }, []);
 
   useEffect(() => {
     const track = trackRef.current;
     const firstItemWidth = track.children[0].offsetWidth + 20.2;
     track.style.setProperty('--scroll-width', `${firstItemWidth}px`);
   }, []);
+
+  // useEffect(() => {
+  //   if (logos.length > 0) {
+  //     const track = trackRef.current;
+
+  //     const updateTrack = () => {
+  //       const firstItemWidth = track.children[0]?.offsetWidth + 10;
+  //       // if (firstItemWidth) {
+  //       //   track.style.setProperty('--scroll-width', `${firstItemWidth}px`);
+  //       // }
+
+  //       // const interval = setInterval(() => {
+  //       //   // track.style.transition = 'transform 0.2s linear';
+  //       //   // track.style.transform = `translateX(-${firstItemWidth}px)`;
+
+  //       //   setTimeout(() => {
+  //       //     track.style.transition = 'none';
+  //       //     track.style.transform = 'translateX(0)';
+  //       //     track.appendChild(track.children[0]);
+  //       //   }, 200);
+  //       // }, 2000);
+
+  //       return () => clearInterval(interval);
+  //     };
+
+  //     setTimeout(updateTrack, 100);
+  //   }
+  // }, [logos]);
 
   return (
     <div className="image-carousel">

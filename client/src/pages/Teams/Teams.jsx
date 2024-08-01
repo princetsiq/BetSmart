@@ -63,7 +63,7 @@ const Teams = () => {
       sorted.sort((a, b) => a.full_name.localeCompare(b.full_name));
     }
     if (showFollowed) {
-      sorted = sorted.filter((team) => followedTeams[team.full_name]);
+      sorted = sorted.filter((team) => followedTeams[team.id]);
     }
     setSortedTeams(sorted);
   }, [sortOrder, showFollowed, teams, followedTeams]);
@@ -72,10 +72,10 @@ const Teams = () => {
     setSortOrder(sortOrder === 'default' ? 'a-z' : 'default');
   };
 
-  const toggleFollow = (teamName) => {
+  const toggleFollow = (teamId) => {
     setFollowedTeams((prev) => ({
       ...prev,
-      [teamName]: !prev[teamName],
+      [teamId]: !prev[teamId],
     }));
   };
 
@@ -106,13 +106,13 @@ const Teams = () => {
       <div className="teams-grid" style={{ gridTemplateColumns: `repeat(${cardsPerRow}, 1fr)` }}>
         {sortedTeams.map((team, index) => (
           <TeamCard
-            key={team.id || index}
+            key={index}
+            id={team.id}
             img={team.logo_path}
             title={team.full_name}
             description={team.description}
-            link={'http://localhost:5173/teams'}
-            isFollowed={!!followedTeams[team.full_name]}
-            onToggleFollow={() => toggleFollow(team.full_name)}
+            isFollowed={!!followedTeams[team.id]}
+            onToggleFollow={() => toggleFollow(team.id)}
           />
         ))}
       </div>
