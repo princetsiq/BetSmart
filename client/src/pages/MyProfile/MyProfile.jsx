@@ -1,9 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
+import "./MyProfile.scss";
+import UserCard from "../../components/UserCard/UserCard";
+import UserTeams from "../../components/UserCard/UserTeams";
+import Jaden from "../../assets/ProfilePics/Jaden.jpeg";
+import gsw from "../../assets/teams/gsw.png";
+import lal from "../../assets/teams/lal.png";
+import nyk from "../../assets/teams/nyk.png";
+import okc from "../../assets/teams/okc.png";
 
 const MyProfile = () => {
-	return (
-		<h1>MyProfile</h1>
-	);
+  const placeholderDesc = "This is a placeholder description.";
+  const pLink = "https://example.com"; // Replace with actual link if available
+
+  const teamsData = [
+    {
+      id: 1,
+      img: gsw,
+      title: "Golden State Warriors",
+      description: placeholderDesc,
+      link: pLink,
+    },
+    {
+      id: 3,
+      img: nyk,
+      title: "New York Knicks",
+      description: placeholderDesc,
+      link: pLink,
+    },
+    {
+      id: 2,
+      img: lal,
+      title: "Los Angeles Lakers",
+      description: placeholderDesc,
+      link: pLink,
+    },
+    {
+      id: 4,
+      img: okc,
+      title: "Oklahoma City Thunder",
+      description: placeholderDesc,
+      link: pLink,
+    },
+  ];
+
+  const [followedTeams, setFollowedTeams] = useState({
+    "Golden State Warriors": true,
+    "New York Knicks": false,
+    "Los Angeles Lakers": false,
+    "Oklahoma City Thunder": false,
+  });
+
+  const toggleFollow = (teamTitle) => {
+    setFollowedTeams((prev) => ({
+      ...prev,
+      [teamTitle]: !prev[teamTitle],
+    }));
+  };
+
+  return (
+    <div className="center-container">
+      <div className="wrap">
+        <div className="user-wrap">
+          <UserCard username="Jadenar07" image={Jaden} />
+        </div>
+        <div className="team-wrap">
+          <UserTeams
+            cardsPerRow={3}
+            sortedTeams={teamsData}
+            followedTeams={followedTeams}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default MyProfile;

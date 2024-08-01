@@ -1,7 +1,7 @@
 $light-gray: #ccc;
 $dark-gray: #999;
 $cream: #fafaf5;
-$green: #426B1F;
+$green: #426b1f;
 $white: #fff;
 $black: #000;
 $gray: #838383;
@@ -15,8 +15,8 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   font-size: 16px;
   cursor: pointer;
   margin-right: 10px;
-  height: 40px; 
-  line-height: 1.5; 
+  height: 40px;
+  line-height: 1.5;
   white-space: nowrap;
   transition: 400ms;
 }
@@ -25,12 +25,11 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 16px;
 
   .games-grid {
-    display: flex;
+    // display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    // display: grid;
-    gap: .5rem;
-    
+    display: grid;
+    gap: 0.5rem;
   }
 
   .games-list {
@@ -70,7 +69,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border: 0;
     height: 1px;
     background: $light-gray;
-    margin-bottom: 50px; 
+    margin-bottom: 50px;
   }
 
   .load-more-container {
@@ -216,7 +215,7 @@ $button-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
       &:active {
-        transform: scale(0.9); 
+        transform: scale(0.9);
       }
 
       .text {
