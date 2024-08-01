@@ -22,17 +22,17 @@ const Home = ({ teams = []}) => {
     if (width > 600) return 1;
   };
 
-  // const { isAuthenticated } = useAuth();
-  // const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 	const [cardsPerRow, setCardsPerRow] = useState(getCardsPerRow(window.innerWidth));
 
-  // const handleButtonClick = () => {
-  //   if (isAuthenticated) {
-  //     navigate('/games');
-  //   } else {
-  //     navigate('/login');
-  //   }
-  // };
+  const handleButtonClick = () => {
+    if (isAuthenticated) {
+      navigate('/games');
+    } else {
+      navigate('/login');
+    }
+  };
 
 	useEffect(() => {
     const handleResize = () => {
@@ -54,14 +54,14 @@ const Home = ({ teams = []}) => {
 			<div className="button-container">
         <button
           className="home-button"
-          // onClick={handleButtonClick}
+          onClick={handleButtonClick}
         >
-          {/* {isAuthenticated ? "Browse Games" : "Log In"} */}
-					Browse Games
+          {isAuthenticated ? "Browse Games" : "Log In"}
         </button>
       </div>
 			<ImageCarousel />
 			<div className="home-container">
+				{/* <ImageCarousel /> */}
 				<div className="info-container">
 					<div className="grid-container">
 						<div className="home-grid" style={{ gridTemplateColumns: `repeat(${cardsPerRow}, 1fr)` }}>

@@ -12,7 +12,6 @@ $dark-gray: #999;
 }
 
 .team-card-container {
-  justify-content: space-between;
   width: 15rem;
   border-radius: 1rem;
   box-shadow: 0px 6px 6px $dark-gray;
@@ -71,8 +70,6 @@ $dark-gray: #999;
 }
 
 .team-card-btn {
-  align-self: flex-end;
-  margin-top: auto;
   text-align: center;
   width: 90%;
   border-radius: 5px;
@@ -82,30 +79,3 @@ $dark-gray: #999;
   text-decoration: none;
   margin: 0.5rem auto;
 }
-
-.to-players {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.view-team {
-	display: inline-block;
-	margin: 16px;
-	padding: 8px 16px;
-	background-color: #6ab04a;
-	color: white;
-	text-decoration: none;
-	border-radius: 4px;
-	text-align: center;
-	transition: background-color 0.3s, transform 0.3s;
-  min-width: 208px;
-  border: none;
-}
-
-.view-team:hover {
-  transition: 400ms;
-	background-color: #328621;
-	transform: scale(1.05);
-}
-

@@ -5,18 +5,18 @@ import './SignUp.scss';
 
 const SignUp = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  // const { login } = useAuth();
-  // const navigate = useNavigate();
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
 
-  // const handleSignUp = (e) => {
-  //   e.preventDefault();
-  //   login();
-  //   navigate('/');
-  // };
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    login();
+    navigate('/');
+  };
 
   return (
     <div className="signup">
@@ -79,8 +79,7 @@ const SignUp = () => {
             </button>
           </div>
           <div className="submit-position">
-            {/* <button type="submit" className="signup-btn" onClick={handleSignUp}>Create Account</button> */}
-            <button type="submit" className="signup-btn">Create Account</button>
+            <button type="submit" className="signup-btn" onClick={handleSignUp}>Create Account</button>
           </div>
           <br/>
           <hr className="break" />

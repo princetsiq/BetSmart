@@ -101,13 +101,12 @@ $button-shadow: 0 2px 5px #0000001a;
       @include transition(transform, 400ms);
     }
 
-    .default-list-teams {
+    .default {
       @extend .button-base;
       background-color: $green;
       border: 0px;
       outline: 2px $green solid;
       outline-offset: -2px;
-      min-width: 94px;
 
       &:hover {
         transform: scale(1.05);
@@ -130,7 +129,8 @@ $button-shadow: 0 2px 5px #0000001a;
       }
     }
 
-    .a-z { 
+    .a-z,
+    .list-view { 
       @extend .button-base;
       background-color: $white;
       border: 0px;

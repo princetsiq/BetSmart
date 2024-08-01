@@ -90,54 +90,6 @@ app.get("/api/nba/games", async (req, res) => {
   }
 });
 
-app.get("/api/nba/logos", (_req, res) => {
-  const pythonProcess = spawn("python3", ["fetch_team_images.py"]);
-
-  pythonProcess.stdout.on("data", (data) => {
-    res.send(JSON.parse(data.toString()));
-  });
-
-  pythonProcess.stderr.on("data", (data) => {
-    console.error(`Error: ${data}`);
-    res.status(500).send("Error fetching logos");
-  });
-});
-
-app.get("/api/nba/player-details", async (req, res) => {
-  const { teamId } = req.query;
-  try {
-    const playerDetails = await callPythonScript("fetch_team_images.py", [
-      "players",
-      teamId,
-    ]);
-    res.json(playerDetails);
-  } catch (error) {
-    console.error(`Error fetching player images: ${error}`);
-    res.status(500).json({ error: "Failed to fetch player images" });
-  }
-});
-
-app.get("/api/nba/seasons", async (_req, res) => {
-  try {
-    const seasons = [
-      "2013-14",
-      "2014-15",
-      "2015-16",
-      "2016-17",
-      "2017-18",
-      "2018-19",
-      "2019-20",
-      "2020-21",
-      "2021-22",
-      "2022-23",
-      "2023-24",
-    ];
-    res.json(seasons);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch seasons" });
-  }
-});
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
