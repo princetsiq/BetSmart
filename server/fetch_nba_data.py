@@ -2,6 +2,7 @@ import sys
 import json
 from nba_api.stats.static import teams
 from nba_api.stats.endpoints import leaguegamefinder
+from nba_api.stats.endpoints import commonteamroster, commonplayerinfo
 import requests
 
 def get_teams():
@@ -9,7 +10,7 @@ def get_teams():
     detailed_teams = []
     for team in nba_teams:
         team_abbreviation = team['abbreviation']
-        detailed_team = {
+        detailed_teams.append({
             'id': team['id'],
             'full_name': team['full_name'],
             'abbreviation': team['abbreviation'],
@@ -23,9 +24,7 @@ def get_teams():
                                 were founded in {team['year_founded']}. They're located
                                 in {team['city']}, {team['state']}. Their nickname is The
                                 {team['nickname']}.'''
-        }
-
-        detailed_teams.append(detailed_team)
+        })
     return detailed_teams
 
 def get_games(season = '2013-14', season_type = 'Regular Season'):
@@ -73,13 +72,38 @@ def get_games(season = '2013-14', season_type = 'Regular Season'):
             upcoming_games.append(game_info)
             seen_game_ids.add(game_identifier)
         return upcoming_games
-
     except requests.exceptions.RequestException as e:
         print(f"Request error: {e}")
         return []
     except Exception as e:
         print(f"Error fetching game data: {e}")
         return []
+
+
+def get_team_players(team_id=1610612737):
+    roster = commonteamroster.CommonTeamRoster(team_id=team_id).get_data_frames()[0]
+    player_ids = roster['PLAYER_ID'].tolist()
+    player_details = []
+
+    for player_id in player_ids:
+        player_info = commonplayerinfo.CommonPlayerInfo(player_id=player_id).get_data_frames()
+        player_info_data = player_info[0]
+        player_stats = player_info[1]
+
+        player_details.append({
+            'id': player_id,
+            'name': player_stats.loc[0, 'PLAYER_NAME'],
+            'position': player_info_data.loc[0, 'POSITION'],
+            'height': player_info_data.loc[0, 'HEIGHT'],
+            'team_name': player_info_data.loc[0, 'TEAM_NAME'],
+            'team_city': player_info_data.loc[0, 'TEAM_CITY'],
+            'stats': {
+                'points': player_stats.loc[0, 'PTS'],
+                'assists': player_stats.loc[0, 'AST'],
+                'rebounds': player_stats.loc[0, 'REB'],
+            }
+        })
+    return player_details
 
 if __name__ == "__main__":
     data_type = sys.argv[1]
@@ -91,3 +115,7 @@ if __name__ == "__main__":
         season_type = sys.argv[3]
         upcoming_games = get_games(season, season_type)
         print(json.dumps(upcoming_games))
+    elif data_type == "players":
+        team_id = sys.argv[2]
+        team_players = get_team_players(team_id)
+        print(json.dumps(team_players))
