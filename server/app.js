@@ -36,27 +36,6 @@ const callPythonScript = (scriptName, args = []) => {
   });
 };
 
-app.get('/api/nba/teams', async (_req, res) => {
-  try {
-    const teams = await callPythonScript('fetch_nba_data.py', ['teams']);
-    res.json(teams);
-  } catch (error) {
-    console.error(`Error fetching teams: ${error}`);
-    res.status(500).json({ error: 'Failed to fetch teams data' });
-  }
-});
-
-app.get('/api/nba/players', async (req, res) => {
-  const { teamId } = req.query;
-  try {
-    const players = await callPythonScript('fetch_nba_data.py', ['players', teamId]);
-    res.json(players);
-  } catch (error) {
-    console.error(`Error fetching teams: ${error}`);
-    res.status(500).json({ error: 'Failed to fetch teams data' });
-  }
-});
-
 app.get('/api/nba/seasons', async (_req, res) => {
   try {
     const seasons = [
@@ -67,6 +46,16 @@ app.get('/api/nba/seasons', async (_req, res) => {
     res.json(seasons);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch seasons' });
+  }
+});
+
+app.get('/api/nba/teams', async (_req, res) => {
+  try {
+    const teams = await callPythonScript('fetch_nba_data.py', ['teams']);
+    res.json(teams);
+  } catch (error) {
+    console.error(`Error fetching teams: ${error}`);
+    res.status(500).json({ error: 'Failed to fetch teams data' });
   }
 });
 
@@ -81,23 +70,21 @@ app.get('/api/nba/games', async (req, res) => {
   }
 });
 
-app.get('/api/nba/logos', (_req, res) => {
-  const pythonProcess = spawn('python3', ['fetch_team_images.py']);
-  
-  pythonProcess.stdout.on('data', (data) => {
-      res.send(JSON.parse(data.toString()));
-  });
-
-  pythonProcess.stderr.on('data', (data) => {
-      console.error(`Error: ${data}`);
-      res.status(500).send('Error fetching logos');
-  });
+app.get('/api/nba/logos', async (_req, res) => {
+  try {
+    const logos = await callPythonScript('fetch_team_info.py', ['logos']);
+    res.json(logos);
+  } catch (error) {
+    console.error(`Error fetching logos: ${error}`);
+    res.status(500).json({ error: 'Failed to fetch logos data' });
+  }
 });
+
 
 app.get('/api/nba/player-details', async (req, res) => {
   const { teamId } = req.query;
   try {
-    const playerDetails = await callPythonScript('fetch_team_images.py', ['players', teamId]);
+    const playerDetails = await callPythonScript('fetch_team_info.py', ['players', teamId]);
     res.json(playerDetails);
   } catch (error) {
     console.error(`Error fetching player images: ${error}`);
