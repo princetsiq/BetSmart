@@ -129,7 +129,7 @@ const Teams = () => {
             <div className='header-title'>
               <br />
               <br />
-              <AnimateLetters letterClass={letterClass} strArray={"Teams".split("")} idx={1} />
+              <AnimateLetters letterClass={letterClass} strArray={"View Teams".split("")} idx={1} />
             </div>
             <div className='header-options'>
               <button className="default-list-teams" onClick={() => setView(view === 'grid' ? 'list' : 'grid')}>

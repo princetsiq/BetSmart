@@ -55,7 +55,6 @@ const Games = () => {
     setLoading(true);
     setShowFilters(false);
     try {
-      console.log(tempSeason, tempGameType);
       const games = await fetchGames(tempSeason, tempGameType);
       setGames(games);
       setSortedGames(games.slice(0, 30));
@@ -74,11 +73,8 @@ const Games = () => {
       try {
         const seasons = await fetchSeasons();
         setSeasons(seasons);
-        
         const currentSeason = seasons[seasons.length - 1];
-        setSelectedSeason(currentSeason);
-        console.log(currentSeason);
-  
+        setSelectedSeason(currentSeason);  
         const games = await fetchGames(currentSeason, 'Regular Season');
         setGames(games);
         setSortedGames(games.slice(0, 30));
@@ -177,7 +173,7 @@ const Games = () => {
             </div>
             <div className='header-options'>
               <div className="filter-container">
-                <button onClick={() => setShowFilters(prev => !prev)} className="filter-button">
+                <button onClick={() => setShowFilters(prev => !prev)} className={`filter-button ${showFilters ? "clicked" : ""}`}>
                   <FontAwesomeIcon icon={faBars} />
                 </button>
                 {showFilters && (
@@ -225,24 +221,3 @@ const Games = () => {
 };
 
 export default Games;
-
-
-// useEffect(() => {
-  //   fetch('http://localhost:5002/api/nba/games')
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! status: ${response.status}`);
-  //       }
-  //       return response.json();
-  //     })
-  //     .then(data => {
-  //       setGames(data);
-  //       setSortedGames(data.slice(0, 30));
-  //       setTotalPages(Math.ceil(data.length / 30));
-  //       setLoading(false);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching games:', error);
-  //       setLoading(false);
-  //     });
-  // }, []);

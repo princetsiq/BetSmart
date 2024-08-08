@@ -35,6 +35,7 @@ $dark-gray: #999;
 .team-card-img {
   width: 100%;
   border-radius: 1rem 1rem 0 0;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 1));
 }
 
 .team-card-title,

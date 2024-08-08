@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import './AnimateLetters.scss'
 
 const AnimateLetters = ({ letterClass, strArray, idx }) => {

@@ -5,13 +5,13 @@ import AnimateLetters from '../../components/AnimateLetters/AnimateLetters';
 import Loading from '../../components/Loading/Loading';
 import './Players.scss'; 
 
-const Players = () => {
-	const getCardsPerRow = (width) => {
-    if (width > 900) return 4;
-    if (width > 600) return 2;
-    return 1;
-  };
+const getCardsPerRow = (width) => {
+	if (width > 900) return 4;
+	if (width > 600) return 2;
+	return 1;
+};
 
+const Players = () => {
   const [view, setView] = useState('grid');
   const [players, setPlayers] = useState([]);
   const [sortedPlayers, setSortedPlayers] = useState([]);

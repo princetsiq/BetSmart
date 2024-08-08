@@ -6,13 +6,15 @@ $cream: #f3f3e6;
 $focus-shadow: #28a74580;
 $focus-shadow-black: #00000080;
 $button-shadow: 0 2px 5px #0000001a;
+// $home: #f3f3e6;
 
 @mixin transition($property, $duration) {
   transition: $property $duration ease;
 }
 
 body {
-  overflow-x: hidden; 
+  overflow-x: hidden;
+	// background: $home; 
 }
 
 .home {
@@ -42,7 +44,7 @@ body {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding-bottom: 80px;
+		// padding-bottom: 80px;
 
 		.button-base {
 			border-radius: 6px;
@@ -90,15 +92,17 @@ body {
 	.home-container {
 		display: flex;
 		flex-direction: column;
+		min-width: 100%;
 
 		.info-container {
 			display: flex;
 			flex-direction: row;
 			justify-content: center;
+			// padding-top: 80px;
 
 			.home-grid {
-				height: 500px;
-				width: 500px;
+				// height: 50%;
+				width: 50%;
 				display: flex;
 				flex-wrap: wrap;
 				gap: 1rem;
@@ -106,48 +110,18 @@ body {
 				justify-content: center;
 			}
 
-			.teams-list {
-				display: flex;
-				flex-direction: column;
-				gap: 8px;
-				height: 500px;
-				width: 500px;
-				flex-wrap: wrap;
-		
-				.team-list-item {
-					display: flex;
-					align-items: center;
-					background: $cream;
-					border: 1px solid $gray;
-					padding: 10px;
-					border-radius: 8px;
-					width: 150px;
-					height: 150px;
-		
-					.team-logo {
-						width: 40px;
-						height: 40px;
-						margin-right: 8px;
-					}
-		
-					.team-name {
-						font-size: 14px;
-						font-weight: 400;
-						// margin-right: 8px;
-					}
-				}
-			}
-
 			.home-img {
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				height: 500px;
-				width: 500px;
+				// height: 50%;
+				width: 50%;
 
 				.circle-img {
-					height: 400px;
-					width: 400px;
+					height: 500px;
+					width: 500px;
+					// height: 50%;
+					// width: 50%;
 					border-radius: 50%;
 				}
 			}
@@ -161,6 +135,7 @@ body {
 			padding: 20px;
 			box-sizing: border-box;
 			width: 100%;
+			padding-top: 80px;
 		
 			.message {
 				max-width: 600px;

@@ -3,12 +3,12 @@
 .text-animate {
   display: inline-block;
   opacity: 0;
-  animation: bounceIn 2s forwards, fadeIn 2s forwards, colorTransition 1s 3s forwards;
+  animation: bounceIn 2s forwards, fadeIn 2s forwards;
   animation-duration: 1s;
   animation-delay: 1s;
   animation-fill-mode: forwards;
   min-width: 10px;
-  color: #28a745;
+  // color: #28a745;
 }
 
 .text-animate-hover {
@@ -86,13 +86,13 @@
   }
 }
 
-@keyframes colorTransition {
-  from {
-    color: #28a745;
-    // color: #000;
-  }
-  to {
-    color: #000;
-    // color: #28a745;
-  }
-}
+// @keyframes colorTransition {
+//   from {
+//     color: #28a745;
+//     // color: #000;
+//   }
+//   to {
+//     color: #000;
+//     // color: #28a745;
+//   }
+// }

@@ -2,6 +2,7 @@ $white: #ffffff;
 $gray: #707070;
 $black: #000000;
 $green: #426B1F;
+$background: #f3f3e6;
 
 * {
   box-sizing: border-box;
@@ -45,6 +46,7 @@ $green: #426B1F;
       display: flex;
       align-items: center;
       font-size: .9rem;
+      // background-color: $background;
       
       &.log-out {
         max-width: 74px;

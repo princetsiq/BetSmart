@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
-import '../ImageCarousel/ImageCarousel.scss'
+// import '../ImageCarousel/ImageCarousel.scss'
+import './ImageCarousel.scss'
+
 
 const logos = [
     "/team_logos/atl.png",
@@ -50,7 +52,7 @@ const ImageCarousel = () => {
 
   useEffect(() => {
     const track = trackRef.current;
-    const firstItemWidth = track.children[0].offsetWidth + 20.2;
+    const firstItemWidth = track.children[0].offsetWidth + 40.2;
     track.style.setProperty('--scroll-width', `${firstItemWidth}px`);
   }, []);
 

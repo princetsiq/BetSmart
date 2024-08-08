@@ -1,38 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-import ImageCarousel from '../../components/ImageCarousel/ImageCarousel.jsx'
-import { useAuth } from "../../components/Authentication/AuthContext.jsx";
-import HomeCard from "../../components/HomeCard/HomeCard.jsx";
-import homeImg from "../../assets/home.png"
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Carousel from '../../components/Carousel/Carousel.jsx';
+import { useAuth } from '../../components/Authentication/AuthContext.jsx';
+import HomeCard from '../../components/HomeCard/HomeCard.jsx';
+import homeImg from '../../assets/home.png';
 import './Home.scss';
-
-// const Home = () => {
-// 	return (
-// 		<>
-// 			<h1 className='header'>
-// 				Pick <i>players, sit</i> back and <i>win</i> some bets.
-// 			</h1>
-// 			<ImageCarousel/>
-// 		</>
-// 	);
-// };
 
 const Home = ({ teams = []}) => {
 	const getCardsPerRow = (width) => {
     if (width > 600) return 1;
   };
 
-  // const { isAuthenticated } = useAuth();
-  // const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 	const [cardsPerRow, setCardsPerRow] = useState(getCardsPerRow(window.innerWidth));
 
-  // const handleButtonClick = () => {
-  //   if (isAuthenticated) {
-  //     navigate('/games');
-  //   } else {
-  //     navigate('/login');
-  //   }
-  // };
+  const handleButtonClick = () => {
+    if (isAuthenticated) {
+      navigate('/games');
+    } else {
+      navigate('/login');
+    }
+  };
 
 	useEffect(() => {
     const handleResize = () => {
@@ -52,36 +41,30 @@ const Home = ({ teams = []}) => {
         Pick <i>players, sit</i> back and <i>win</i> some bets.
       </h1>
 			<div className="button-container">
-        <button
-          className="home-button"
-          // onClick={handleButtonClick}
-        >
-          {/* {isAuthenticated ? "Browse Games" : "Log In"} */}
-					Browse Games
+        <button className='home-button' onClick={handleButtonClick}>
+          {isAuthenticated ? "Browse Games" : "Log In"}
         </button>
       </div>
-			<ImageCarousel />
-			<div className="home-container">
-				<div className="info-container">
-					<div className="grid-container">
-						<div className="home-grid" style={{ gridTemplateColumns: `repeat(${cardsPerRow}, 1fr)` }}>
-							{teams.map((team, index) => (
-								<HomeCard
-									key={team.id || index}
-									img={team.img}
-									title={team.title}
-								/>
-							))}
-						</div>
+			<Carousel />
+			<div className='home-container'>
+				<div className='info-container'>
+					<div className='home-grid' style={{ gridTemplateColumns: `repeat(${cardsPerRow}, 1fr)` }}>
+						{teams.map((team, index) => (
+							<HomeCard
+								key={team.id || index}
+								img={team.img}
+								title={team.title}
+							/>
+						))}
 					</div>
-					<div className="home-img">
-						<img src={homeImg} alt="home" className="circle-img" />
+					<div className='home-img'>
+						<img src={homeImg} alt='home' className='circle-img' />
 					</div>
 				</div>
-				<div className="what-we-believe">
-					<div className="message">
+				<div className='what-we-believe'>
+					<div className='message'>
 						<h1>What We Believe</h1>
-						<div className="part-1">
+						<div className='part-1'>
 							<p>
 								At BetSmart, we believe in transforming the sports betting experience through data-driven precision, 
 								transparency, and user empowerment. Our advanced algorithms analyze vast amounts of historical and 
@@ -91,25 +74,26 @@ const Home = ({ teams = []}) => {
 								users make smarter betting choices with confidence.
 							</p>
 						</div>
-						<div className="part-2">
+						<div className='part-2'>
 							<p>
 								We also value continuous innovation, user-friendliness, and community. Our platform is designed with a 
 								user-friendly interface, making it accessible for both novices and experienced bettors. By fostering a 
 								supportive and interactive environment, we encourage users to share insights and strategies, enhancing 
 								the collective knowledge of our community. We recognize the ethical responsibilities of sports betting 
 								and promote responsible practices, ensuring a safe and enjoyable experience for all. Join us in 
-								revolutionizing the sports betting landscape with precision, integrity, and community spirit.
+								revolutionizing the sports betting landscape with precision, integrity, and community spirit. &nbsp;
+								<Link to='who-we-are'>Learn more here.</Link>
 							</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
-			<br/>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
     </div>
   );
 };
