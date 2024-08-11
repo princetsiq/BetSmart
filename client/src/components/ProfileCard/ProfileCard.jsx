@@ -15,12 +15,20 @@ const ProfileCard = (props) => {
           <h4> {props.title}</h4>
           <p> {props.about}</p>
           <a
-            href={props.link}
+            href={props.Llink}
             target="_blank"
             rel="noopener noreferrer"
             className="button-link"
           >
-            Visit My LinkedIn
+            <img src={props.Lsocial} alt="Linkeldn"></img>
+          </a>
+          <a
+            href={props.Glink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-link"
+          >
+            <img src={props.Gsocial} alt="Github"></img>
           </a>
         </div>
       </div>

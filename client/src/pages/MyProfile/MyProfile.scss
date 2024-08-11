@@ -1,0 +1,17 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: -190px;
+}
+
+.user-wrap {
+  margin-top: 40px;
+}

@@ -123,7 +123,7 @@ $submit: #12320b;
 
       .form-group {
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
         .form-label {
           position: absolute;
@@ -169,7 +169,29 @@ $submit: #12320b;
         }
       }
 
+      .email-container {
+        .email-error {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          font-size: 12px;
+          font-family: Inter, "Open Sans", sans-serif;
+          line-height: 10px;
+          color: #4d4d4d;
+
+          .error-icon {
+            color: #b81427;
+            height: 13px;
+            width: 13px;
+            margin-right: 8px;
+          }
+        }
+      }
+
       .password-container {
+        display: flex;
+        flex-direction: column;
+
         .form-input {
           padding-right: 40px;
         }
@@ -179,17 +201,49 @@ $submit: #12320b;
           border: none;
           position: absolute;
           right: 10px;
-          top: 50%;
-          transform: translateY(-50%);
+          transform: translateY(15%);
           cursor: pointer;
-          padding: 5px;
-          display: flex;
-          align-items: center;
+          padding: 5px; 
+          display: flex; 
+          align-items: center; 
 
-          svg {
+          svg { 
             height: 80%;
             width: 80%;
           }
+        }
+
+        .requirements {
+          padding: 10px;
+
+          .requirement {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            font-size: 12px;
+            font-family: Inter, "Open Sans", sans-serif;
+            line-height: 10px;
+            color: #4d4d4d;
+
+            .toggle-requirement {
+              display: flex;
+              margin-right: 8px;
+              height: 13px;
+              width: 13px;
+            }
+          }
+
+          .check-icon {
+            color: #008000;
+          }
+          
+          .warning-icon {
+            color: #ffb700;
+          }
+        }
+        
+        .password-input:focus + .requirements {
+          display: block;
         }
       }
 

@@ -40,7 +40,7 @@ p {
 .lower-container h3 {
   color: #2f2d2e;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .lower-container h4 {
@@ -56,19 +56,26 @@ p {
   font-weight: 700;
   font-size: 1rem;
   text-align: left;
+  margin-bottom: 30px;
 }
 
 .button-link {
   margin: 1rem;
-  color: #2f2d2e;
-  font: bold;
   background-color: white;
-  border: 2px solid #019031;
-  padding: 0.6rem;
+  border: 2px solid #01903193;
+  padding: 0.4rem;
   border-radius: 6px;
   transition-duration: 0.5s;
-  animation: ease-in-out;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-link img {
+  width: 24px;
+  height: 24px;
+  margin-top: 3px;
 }
 
 .button-link:hover {

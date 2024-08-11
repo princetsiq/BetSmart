@@ -3,7 +3,6 @@ import json
 from nba_api.stats.static import teams
 from nba_api.stats.endpoints import leaguegamefinder
 import requests
-import aiohttp
 import asyncio
 from fetch_team_info import get_team_logos
 

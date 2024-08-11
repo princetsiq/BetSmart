@@ -1,12 +1,9 @@
 import sys
 from bs4 import BeautifulSoup
-import requests
 import ssl
 import certifi
 from nba_api.stats.static import teams
 from nba_api.stats.endpoints import commonteamroster, commonplayerinfo
-# import concurrent.futures
-# from concurrent.futures import ThreadPoolExecutor
 import json
 import aiohttp
 import asyncio
@@ -58,8 +55,7 @@ def get_player_details(team_id):
             player_info_data = player_info[0]
             player_stats = player_info[1]
 
-            if player_info_data.empty or player_stats.empty:
-                continue
+            if player_info_data.empty or player_stats.empty: continue
 
             player_details.append({
                 'id': player_id,
@@ -77,7 +73,6 @@ def get_player_details(team_id):
             })
 
         return player_details
-
     except Exception as e:
         print(f'Error fetching player details: {e}')
         return []
@@ -85,8 +80,6 @@ def get_player_details(team_id):
 if __name__ == '__main__':
     data_type = sys.argv[1]
     if data_type == 'logos':
-        # logos = get_team_logos()
-        # print(json.dumps(logos))
         loop = asyncio.get_event_loop()
         logos = loop.run_until_complete(get_team_logos(teams.get_teams()))
         print(json.dumps(logos))
@@ -94,66 +87,3 @@ if __name__ == '__main__':
         team_id = sys.argv[2]
         details = get_player_details(team_id)
         print(json.dumps(details))
-
-# Original
-# def get_team_logos():
-#     tms = teams.get_teams()
-#     logos = {}
-#     for tm in tms:
-#         url = f"https://www.nba.com/team/{tm.get('id')}"
-#         p = requests.get(url)
-#         s = BeautifulSoup(p.content, 'html.parser')
-        
-#         logo_div = s.find('div', class_='TeamHeader_logoBlock__WjNZB')
-#         logo_img = logo_div.find('img') if logo_div else None
-
-#         if logo_img:
-#             logos[tm.get('full_name')] = logo_img['src']
-#         else:
-#             logos[tm.get('full_name')] = None
-#     return logos
-
-
-
-# Option 2 - Concurrent scraping:
-# def fetch_logo(team):
-#     url = f"https://www.nba.com/team/{team.get('id')}"
-#     p = requests.get(url)
-#     s = BeautifulSoup(p.content, 'html.parser')
-    
-#     logo_div = s.find('div', class_='TeamHeader_logoBlock__WjNZB')
-#     logo_img = logo_div.find('img') if logo_div else None
-
-#     if logo_img:
-#         return team.get('full_name'), logo_img['src']
-#     else:
-#         return team.get('full_name'), None
-
-# def get_team_logos():
-#     tms = teams.get_teams()
-#     logos = {}
-
-#     with concurrent.futures.ThreadPoolExecutor() as executor:
-#         results = executor.map(fetch_logo, tms)
-    
-#     for team_name, logo_src in results:
-#         logos[team_name] = logo_src
-
-#     return logos
-
-
-
-# Option 3 - Multi-threading
-# def fetch_logo(team):
-#     url = f"https://www.nba.com/team/{team['id']}"
-#     response = requests.get(url)
-#     soup = BeautifulSoup(response.content, 'html.parser')
-#     logo_div = soup.find('div', class_='TeamHeader_logoBlock__WjNZB')
-#     logo_img = logo_div.find('img') if logo_div else None
-#     return team.get('full_name'), logo_img['src'] if logo_img else None
-
-# def get_team_logos():
-#     tms = teams.get_teams()
-#     with ThreadPoolExecutor(max_workers=10) as executor:
-#         results = executor.map(fetch_logo, tms)
-#     return {team_name: logo_src for team_name, logo_src in results}
