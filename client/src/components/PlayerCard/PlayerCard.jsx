@@ -33,9 +33,6 @@ const PlayerCard = (props) => {
             </button>
           </div>
         )}
-        {/* {props.description && (
-          <p className="player-card-description">{props.description}</p>
-        )} */}
       </div>
       <button className="stats-button" onClick={toggleStats}>
         {showStats ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}

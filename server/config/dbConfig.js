@@ -11,3 +11,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 });
 
 export default sequelize;
+
+// npm install pg     
+// npm install dotenv     
+// npm install sequelize
+// npm install axios 

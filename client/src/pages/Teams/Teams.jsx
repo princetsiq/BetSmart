@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import TeamCard from '../../components/TeamCard/TeamCard';
 import AnimateLetters from '../../components/AnimateLetters/AnimateLetters';
 import Loading from '../../components/Loading/Loading';
@@ -22,22 +23,19 @@ const Teams = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5002/api/nba/teams')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        setTeams(data);
-        setSortedTeams(data);
+    const fetchTeams = async () => {
+      try {
+        const response = await axios.get('http://localhost:5002/api/nba/teams');
+        setTeams(response.data);
+        setSortedTeams(response.data);
         setLoading(false);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error fetching teams:', error);
         setLoading(false);
-      });
+      }
+    };
+  
+    fetchTeams();
   }, []);
 
   useEffect(() => {

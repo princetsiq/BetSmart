@@ -20,6 +20,7 @@ $dark-gray: #999;
   flex-direction: column;
   margin: 0.5rem;
   background: $background;
+  height: 414px;
   @include transition(transform, 400ms);
 
   &:hover {
@@ -89,4 +90,8 @@ $dark-gray: #999;
   padding: 1rem;
   border-radius: 0 0 1rem 1rem;
   box-shadow: 0px -6px 6px $dark-gray;
+
+  &:hover {
+    cursor: text;  
+  }
 }

@@ -6,6 +6,7 @@ $clr: #58bc82;
 $white: #ffffff;
 $clr-alpha: rgba(92, 188, 130, 0.38);
 $submit: #12320b;
+$link: #2a751a;
 
 @mixin transition($property, $duration) {
   transition: $property $duration ease;
@@ -276,6 +277,21 @@ $submit: #12320b;
           &:active {
             transform: scale(0.95);
           }
+        }
+      }
+
+      .link-div {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+
+        a {
+          color: $link;
+          text-decoration: none;
+        }
+
+        a:hover {
+          text-decoration: underline;
         }
       }
 

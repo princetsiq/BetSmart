@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import PlayerCard from '../../components/PlayerCard/PlayerCard';
 import AnimateLetters from '../../components/AnimateLetters/AnimateLetters';
@@ -26,16 +27,23 @@ const Players = () => {
 	const teamName = decodeURIComponent(searchParams.get('teamName'));
 
 	useEffect(() => {
-    if (teamId) {
-      fetch(`http://localhost:5002/api/nba/player-details?teamId=${teamId}`)
-        .then(response => response.json())
-        .then(data => {
-          setPlayers(data);
-          setLoading(false);
-        })
-        .catch(error => console.error('Error fetching player details:', error));
-    }
-  }, [teamId]);
+		const fetchPlayerDetails = async () => {
+			try {
+				const response = await axios.get(`http://localhost:5002/api/nba/player-details`, {
+					params: { teamId }
+				});
+				setPlayers(response.data);
+				setLoading(false);
+			} catch (error) {
+				console.error('Error fetching player details:', error);
+				setLoading(false);
+			}
+		};
+	
+		if (teamId) {
+			fetchPlayerDetails();
+		}
+	}, [teamId]);
 
 	useEffect(() => {
     const handleResize = () => {

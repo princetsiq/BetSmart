@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
-import { signUp, confirmSignUp } from 'aws-amplify/auth';
+import { signUp, confirmSignUp, resendSignUpCode } from 'aws-amplify/auth';
 import outputs from '../../../../server/amplify_outputs.json';
 import './SignUp.scss';
 
@@ -9,13 +10,18 @@ Amplify.configure(outputs)
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+
   const [emailValid, setEmailValid] = useState(true);
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [confirmationStep, setConfirmationStep] = useState(false);
+
   const navigate = useNavigate();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
   const [requirements, setRequirements] = useState([
     {
       text: '8+ characters long',
@@ -80,8 +86,25 @@ const SignUp = () => {
       alert('Sign up successful! Please check your email for verification.');
       setConfirmationStep(true);
       setEmail(form.email.value);
+      setUsername(form.username.value);
+      setFirstName(form.firstname.value);
+      setLastName(form.lastname.value)
     } catch (error) {
       console.error('Error signing up:', error);
+    }
+  };
+
+  const resendCode = async (e) => {
+    e.preventDefault();
+    try {
+      const input = { username: email };  
+      const response = await resendSignUpCode(input);
+      
+      console.log('Code resent successfully:', response);
+      alert('A new confirmation code has been sent to your email.');
+    } catch (error) {
+      console.error('Unexpected error:', error.message);
+      alert('An unexpected error occurred. Please try again later.');
     }
   };
 
@@ -89,19 +112,30 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const form = e.target.elements;
-      await confirmSignUp({
+      const signUpResponse = await confirmSignUp({
         confirmationCode: form.confirmationCode.value, 
         username: email,
       });
 
-      alert('Sign up successful! You can now log in.');
-      navigate('/login');
+      if (signUpResponse.isSignUpComplete) {
+        const userPayload = {
+          email,
+          username,
+          firstName,
+          lastName,
+        };
+
+        await axios.post('http://localhost:5002/api/users', userPayload);
+
+        alert('Sign up successful! You can now log in.');
+        navigate('/login');
+      } else {
+        console.error('Sign up not complete:', signUpResponse.nextStep);
+      }
     } catch (error) {
       console.error('Error handling confirmation code:', error);
     }
   };
-
-  const allRequirementsMet = requirements.every((req) => req.met);
 
   return (
     <div className='signup'>
@@ -138,6 +172,13 @@ const SignUp = () => {
               </div>
               <div className="submit-position">
                 <button type="submit" className="signup-btn">Confirm Account</button>
+              </div>
+              <br />
+              <div className='link-div'>
+                <p>
+                  Didn't receive the code? 
+                  <a href="#" onClick={resendCode}> Click here to resend.</a>
+                </p>
               </div>
             </form>
           </> 

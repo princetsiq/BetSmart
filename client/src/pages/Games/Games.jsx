@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import GameCard from '../../components/GameCard/GameCard';
 import AnimateLetters from '../../components/AnimateLetters/AnimateLetters';
 import Pagination from '@mui/material/Pagination';
@@ -9,21 +10,23 @@ import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons';
 import './Games.scss';
 
 const fetchSeasons = async () => {
-  const response = await fetch('http://localhost:5002/api/nba/seasons');
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+  try {
+    const response = await axios.get('http://localhost:5002/api/nba/seasons');
+    return response.data;
+  } catch (error) {
+    throw new Error(`Error fetching seasons: ${error.response ? error.response.status : error.message}`);
   }
-  const data = await response.json();
-  return data;
 };
 
 const fetchGames = async (season, seasonType) => {
-  const response = await fetch(`http://localhost:5002/api/nba/games?season=${season}&seasonType=${seasonType}`);
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+  try {
+    const response = await axios.get(`http://localhost:5002/api/nba/games`, {
+      params: { season, seasonType }
+    });
+    return response.data;
+  } catch (error) {
+    throw new Error(`Error fetching games: ${error.response ? error.response.status : error.message}`);
   }
-  const data = await response.json();
-  return data;
 };
 
 const Games = () => {

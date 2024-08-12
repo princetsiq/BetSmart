@@ -1,4 +1,7 @@
+// import User from '../models/user.js';
 import { callPythonScript } from '../services/pythonService.js';
+import db from '../models/index.js'; 
+const { User } = db;
 
 export const getSeasons = async (_req, res) => {
   try {
@@ -52,5 +55,16 @@ export const getPlayerDetails = async (req, res) => {
   } catch (error) {
     console.error(`Error fetching player images: ${error}`);
     res.status(500).json({ error: 'Failed to fetch player images' });
+  }
+};
+
+export const createUser = async (req, res) => {
+  const { email, username, firstName, lastName } = req.body;
+  try {
+    const newUser = await User.create({ email, username, first_name: firstName, last_name: lastName });
+    res.status(201).json(newUser);
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).json({ error: 'Failed to create user' });
   }
 };
