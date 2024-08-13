@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { fetchAuthSession } from 'aws-amplify/auth';
 import TeamCard from '../../components/TeamCard/TeamCard';
 import AnimateLetters from '../../components/AnimateLetters/AnimateLetters';
 import Loading from '../../components/Loading/Loading';
@@ -39,6 +40,30 @@ const Teams = () => {
   }, []);
 
   useEffect(() => {
+    const fetchFollowedTeams = async () => {
+      try {
+        const session = await fetchAuthSession();
+        const userEmail = session.tokens.idToken.payload.email;
+
+        const response = await axios.get('http://localhost:5002/api/followed-teams', {
+          params: { email: userEmail },
+        });
+
+        const teams = response.data.reduce((acc, teamId) => {
+          acc[teamId] = true;
+          return acc;
+        }, {});
+
+        setFollowedTeams(teams);
+      } catch (error) {
+        console.error('Error fetching followed teams:', error);
+      }
+    };
+
+    fetchFollowedTeams();
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
       setCardsPerRow(getCardsPerRow(window.innerWidth));
     };
@@ -70,11 +95,43 @@ const Teams = () => {
     setSortOrder(sortOrder === 'default' ? 'a-z' : 'default');
   };
 
-  const toggleFollow = (teamId) => {
-    setFollowedTeams((prev) => ({
-      ...prev,
-      [teamId]: !prev[teamId],
-    }));
+  const toggleFollow = async (teamId) => {
+    console.log(`toggleFollow called for teamId: ${teamId}`);
+    try {
+      const session = await fetchAuthSession();
+      const userEmail = session.tokens.idToken.payload.email;
+
+      setFollowedTeams((prev) => {
+        const isFollowing = !prev[teamId];
+        return {
+          ...prev,
+          [teamId]: isFollowing,
+        };
+      });
+
+      const isFollowing = !followedTeams[teamId];
+      
+      if (isFollowing) {
+        console.log(`toggleFollow API called!`);
+        axios.post('http://localhost:5002/api/user-teams', { teamId, email: userEmail })
+          .then(response => {
+            console.log('Team followed successfully:', response.data);
+          })
+          .catch(error => {
+            console.error('Error following team:', error);
+          });
+      } else {
+        axios.delete(`http://localhost:5002/api/user-teams/${teamId}`, { data: { email: userEmail } })
+          .then(response => {
+            console.log('Team unfollowed successfully:', response.data);
+          })
+          .catch(error => {
+            console.error('Error unfollowing team:', error);
+          });
+      }
+    } catch (error) {
+      console.error('Error fetching user session or processing follow action:', error);
+    }
   };
 
   const renderTeams = () => {
