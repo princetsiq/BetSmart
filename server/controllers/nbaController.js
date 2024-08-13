@@ -1,7 +1,6 @@
-// import User from '../models/user.js';
 import { callPythonScript } from '../services/pythonService.js';
 import db from '../models/index.js'; 
-const { User } = db;
+const { User, UserTeam, UserPlayer } = db;
 
 export const getSeasons = async (_req, res) => {
   try {
@@ -61,10 +60,70 @@ export const getPlayerDetails = async (req, res) => {
 export const createUser = async (req, res) => {
   const { email, username, firstName, lastName } = req.body;
   try {
-    const newUser = await User.create({ email, username, first_name: firstName, last_name: lastName });
+    const newUser = await User.create({ 
+      email, 
+      username, 
+      first_name: firstName, 
+      last_name: lastName 
+    });
     res.status(201).json(newUser);
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ error: 'Failed to create user' });
+  }
+};
+
+export const createUserTeam = async (req, res) => {
+  const { teamId, email } = req.body;
+
+  try {
+    const newUserTeam = await UserTeam.create({ 
+      user_email: email, 
+      team_id: teamId 
+    });
+    res.status(201).json(newUserTeam);
+  } catch (error) {
+    console.error('Error following team:', error);
+    res.status(500).json({ error: 'Failed to follow team' });
+  }
+};
+
+export const deleteUserTeam = async (req, res) => {
+  const { teamId } = req.params;
+  const { email } = req.body;
+
+  try {
+    const result = await UserTeam.destroy({
+      where: { 
+        user_email: email, 
+        team_id: teamId 
+      },
+    });
+
+    if (result > 0) {
+      res.status(200).json({ message: 'Team unfollowed successfully' });
+    } else {
+      res.status(404).json({ error: 'Team not found or not followed' });
+    }
+  } catch (error) {
+    console.error('Error unfollowing team:', error);
+    res.status(500).json({ error: 'Failed to unfollow team' });
+  }
+};
+
+export const getFollowedTeams = async (req, res) => {
+  const userEmail = req.query.email;  
+
+  try {
+    const followedTeams = await UserTeam.findAll({
+      where: { user_email: userEmail },
+      attributes: ['team_id'], 
+    });
+    
+    const teamIds = followedTeams.map(team => team.team_id);
+    res.status(200).json(teamIds); 
+  } catch (error) {
+    console.error('Error fetching followed teams:', error);
+    res.status(500).json({ error: 'Failed to fetch followed teams' });
   }
 };
