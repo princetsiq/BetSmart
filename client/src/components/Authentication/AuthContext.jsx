@@ -7,14 +7,21 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function checkUserSession() {
       try {
-        await AuthService.getUserSession();
-        setIsAuthenticated(true);
+        const tokens = await AuthService.getUserSession();
+        if (tokens) {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
       } catch (error) {
         setIsAuthenticated(false);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -35,7 +42,7 @@ export const AuthProvider = ({ children }) => {
   });
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <AuthContext.Provider value={{ isAuthenticated, loading }}>
       {children}
     </AuthContext.Provider>
   );

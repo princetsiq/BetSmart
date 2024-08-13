@@ -17,15 +17,19 @@ const AuthService = {
   getUserSession: async function() {
     try {
       const session = await fetchAuthSession();
-      console.log("id token", session.tokens.idToken);
-      console.log("access token", session.tokens.accessToken);
-      return session.tokens;
+      if (session && session.tokens) {
+        console.log("id token", session.tokens.idToken);
+        console.log("access token", session.tokens.accessToken);
+        return session.tokens;
+      } else {
+        return null;
+      }
     } catch (error) {
       console.error("Error fetching user session", error);
       return null;
     }
   },
-
+  
   refreshUserSession: async function() {
     try {
       const session = await fetchAuthSession({ forceRefresh: true });

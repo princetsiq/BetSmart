@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ProtectedRoute from './components/Authentication/ProtectedRoute';
 import Games from './pages/Games/Games';
-import Layout from './components/Layout/Layout';
 import SignUp from './components/Authentication/SignUp';
 import Login from './components/Authentication/Login';
 import WhoWeAre from './pages/WhoWeAre/WhoWeAre';
@@ -48,15 +48,15 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='sign-up' element={<SignUp />} />
-        <Route path='login' element={<Login />} />
-        <Route path='/' element={<Layout />}>
+        <Route path="sign-up" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
+        <Route path="/" element={<ProtectedRoute />}>
           <Route index element={<Home teams={teamsData} />} />
-          <Route path='games' element={<Games />} />
-          <Route path='teams' element={<Teams />} />
-          <Route path='players' element={<Players />} />
-          <Route path='who-we-are' element={<WhoWeAre />} />
-          <Route path='my-profile' element={<MyProfile />} />
+          <Route path="games" element={<Games />} />
+          <Route path="teams" element={<Teams />} />
+          <Route path="players" element={<Players />} />
+          <Route path="who-we-are" element={<WhoWeAre />} />
+          <Route path="my-profile" element={<MyProfile />} />
         </Route>
       </Routes>
     </Router>
