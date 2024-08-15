@@ -127,3 +127,58 @@ export const getFollowedTeams = async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch followed teams' });
   }
 };
+
+export const createUserPlayer = async (req, res) => {
+  const { playerId, email } = req.body;
+
+  try {
+    const newUserPlayer = await UserPlayer.create({ 
+      user_email: email, 
+      player_id: playerId 
+    });
+    res.status(201).json(newUserPlayer);
+  } catch (error) {
+    console.error('Error following player:', error);
+    res.status(500).json({ error: 'Failed to follow player' });
+  }
+};
+
+export const deleteUserPlayer = async (req, res) => {
+  const { playerId } = req.params;
+  const { email } = req.body;
+
+  try {
+    const result = await UserPlayer.destroy({
+      where: { 
+        user_email: email, 
+        player_id: playerId 
+      },
+    });
+
+    if (result > 0) {
+      res.status(200).json({ message: 'Player unfollowed successfully' });
+    } else {
+      res.status(404).json({ error: 'Player not found or not followed' });
+    }
+  } catch (error) {
+    console.error('Error unfollowing player:', error);
+    res.status(500).json({ error: 'Failed to unfollow player' });
+  }
+};
+
+export const getFollowedPlayers = async (req, res) => {
+  const userEmail = req.query.email;  
+
+  try {
+    const followedPlayers = await UserPlayer.findAll({
+      where: { user_email: userEmail },
+      attributes: ['player_id'], 
+    });
+    
+    const playerIds = followedPlayers.map(player => player.player_id);
+    res.status(200).json(playerIds); 
+  } catch (error) {
+    console.error('Error fetching followed players:', error);
+    res.status(500).json({ error: 'Failed to fetch followed players' });
+  }
+};

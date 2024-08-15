@@ -96,7 +96,6 @@ const Teams = () => {
   };
 
   const toggleFollow = async (teamId) => {
-    console.log(`toggleFollow called for teamId: ${teamId}`);
     try {
       const session = await fetchAuthSession();
       const userEmail = session.tokens.idToken.payload.email;
@@ -112,7 +111,6 @@ const Teams = () => {
       const isFollowing = !followedTeams[teamId];
       
       if (isFollowing) {
-        console.log(`toggleFollow API called!`);
         axios.post('http://localhost:5002/api/user-teams', { teamId, email: userEmail })
           .then(response => {
             console.log('Team followed successfully:', response.data);

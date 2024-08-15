@@ -24,7 +24,7 @@ $dark-gray: #999;
   @include transition(transform, 400ms);
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     cursor: pointer;
   }
 }

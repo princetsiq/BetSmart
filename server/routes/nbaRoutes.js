@@ -6,10 +6,14 @@ import {
   getLogos,
   getPlayerDetails,
   createUser,
+//   deleteUser,
   createUserTeam,
   deleteUserTeam,
   getFollowedTeams,
-//   deleteUser,
+  getFollowedPlayers,
+  createUserPlayer,
+  deleteUserPlayer,
+
 } from '../controllers/nbaController.js';
 
 const router = express.Router();
@@ -26,5 +30,9 @@ router.post('/users', createUser)
 router.get('/followed-teams', getFollowedTeams)
 router.post('/user-teams', createUserTeam);
 router.delete('/user-teams/:teamId', deleteUserTeam);
+
+router.get('/followed-players', getFollowedPlayers)
+router.post('/user-players', createUserPlayer);
+router.delete('/user-players/:playerId', deleteUserPlayer);
 
 export default router;
