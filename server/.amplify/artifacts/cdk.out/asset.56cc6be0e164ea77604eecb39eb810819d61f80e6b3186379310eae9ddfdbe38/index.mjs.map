@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/@aws-amplify/backend-function/src/lambda-shims/cjs_shim.ts", "../../../../amplify/functions/check-auth/handler.ts"],
+  "sourcesContent": ["import { createRequire } from 'node:module';\nimport path from 'node:path';\nimport url from 'node:url';\nglobal.require = createRequire(import.meta.url);\nglobal.__filename = url.fileURLToPath(import.meta.url);\nglobal.__dirname = path.dirname(__filename);\n", "import type { Handler } from 'aws-lambda';\n\nexport const handler: Handler = async (event) => {\n  // Logic to check authentication state\n  const { authorizationToken } = event;\n  \n  if (!authorizationToken) {\n    return {\n      statusCode: 401,\n      body: JSON.stringify({ message: 'Unauthorized' }),\n    };\n  }\n  \n  // Logic to verify the token and return the appropriate navbar\n  // This is a simple example and should be adapted to your needs\n  return {\n    statusCode: 200,\n    body: JSON.stringify({ navbar: 'authenticated' }),\n  };\n};\n"],
+  "mappings": ";AAAA,OAAS,iBAAAA,MAAqB,cAC9B,OAAOC,MAAU,YACjB,OAAOC,MAAS,WAChB,OAAO,QAAUF,EAAc,YAAY,GAAG,EAC9C,OAAO,WAAaE,EAAI,cAAc,YAAY,GAAG,EACrD,OAAO,UAAYD,EAAK,QAAQ,UAAU,ECHnC,IAAME,EAAmB,MAAOC,GAAU,CAE/C,GAAM,CAAE,mBAAAC,CAAmB,EAAID,EAE/B,OAAKC,EASE,CACL,WAAY,IACZ,KAAM,KAAK,UAAU,CAAE,OAAQ,eAAgB,CAAC,CAClD,EAXS,CACL,WAAY,IACZ,KAAM,KAAK,UAAU,CAAE,QAAS,cAAe,CAAC,CAClD,CASJ",
+  "names": ["createRequire", "path", "url", "handler", "event", "authorizationToken"]
+}
