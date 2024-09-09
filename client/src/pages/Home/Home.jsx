@@ -82,7 +82,7 @@ const Home = ({ teams = []}) => {
 								the collective knowledge of our community. We recognize the ethical responsibilities of sports betting 
 								and promote responsible practices, ensuring a safe and enjoyable experience for all. Join us in 
 								revolutionizing the sports betting landscape with precision, integrity, and community spirit. &nbsp;
-								<Link to='who-we-are'>Learn more here.</Link>
+								<Link to='about-us'>Learn more here.</Link>
 							</p>
 						</div>
 					</div>

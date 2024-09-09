@@ -1838,7 +1838,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQ0U7DMAxFv4X31LACH8Ba7RFQx/vkJm6VtU2q2Bmaqv47SYeGeLo+8pV97RJ2rzt4esBvLrQZitG2sLwTC5mjoB5U1blPDDiRUMhQeWesWO9UQ+xj0KSqyOKnP+zcvU5jT4u5Opy8aeEL25H2yKQsTrA0fry5k64K55mvTsNSb/a6rVHweB/5nw7R6RwipelsHwNuiX43jxcKq+LnEzKTMLxlSQz7qAeSHGDN3o8ocxS1tdOxvXX9qpw3BGd+vJQlvKTHnNnaIkQndiJobvoDTRfwOTUBAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WQQU/DMAyFfwv31LAiJK6s1Y6AOu6Tm7hV1japYmdoqvrfSTo0xOn5k5/sZ5ewe9nB0wN+c6HNUIy2heWdWMgcBfWgqs59YsCJhEKGyjtjxXqnGmIfgyZVRRY//WHn7nUae1rM1eHkTQtf2I60RyZlcYKl8ePNnXRVOM98dRqWerPXbY2Cx/vI/3SITucQKU1n+xhwS/S7ebxQWBU/n5CZhOEtS2LYRz2Q5ABr9n5EmaOorZ2O7a3rV+W8ITjz46Us4TU95szWFiE6sRNBc9MfrLX7gjUBAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-server-princetsiquaye-sandbox-bbc169705c/data/amplifyData/Todo/CDKMetadata/Default"

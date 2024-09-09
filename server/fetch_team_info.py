@@ -77,6 +77,38 @@ def get_player_details(team_id):
         print(f'Error fetching player details: {e}')
         return []
 
+def get_followed_player_details(player_ids):
+    try:
+        player_details = []
+        player_images = asyncio.run(get_player_images(player_ids))
+
+        for player_id in player_ids:
+            player_info = commonplayerinfo.CommonPlayerInfo(player_id=player_id).get_data_frames()
+            player_info_data = player_info[0]
+            player_stats = player_info[1]
+
+            if player_info_data.empty or player_stats.empty: continue
+
+            player_details.append({
+                'id': player_id,
+                'name': player_stats.loc[0, 'PLAYER_NAME'],
+                'position': player_info_data.loc[0, 'POSITION'],
+                'height': player_info_data.loc[0, 'HEIGHT'],
+                'team_name': player_info_data.loc[0, 'TEAM_NAME'],
+                'team_city': player_info_data.loc[0, 'TEAM_CITY'],
+                'img': player_images.get(player_id, ''),
+                'stats': {
+                    'points': player_stats.loc[0, 'PTS'],
+                    'assists': player_stats.loc[0, 'AST'],
+                    'rebounds': player_stats.loc[0, 'REB'],
+                }
+            })
+
+        return player_details
+    except Exception as e:
+        print(f'Error fetching individual player details: {e}')
+        return []
+
 if __name__ == '__main__':
     data_type = sys.argv[1]
     if data_type == 'logos':
@@ -87,3 +119,7 @@ if __name__ == '__main__':
         team_id = sys.argv[2]
         details = get_player_details(team_id)
         print(json.dumps(details))
+    elif data_type == 'followed':
+        player_ids = sys.argv[2:]
+        followed_players = get_followed_player_details(player_ids) #  = [ '1628369', '201950' ]
+        print(json.dumps(followed_players))

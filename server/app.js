@@ -19,14 +19,14 @@ sequelize.authenticate()
     console.error('Unable to connect to the database:', error);
   });
 
-db.sequelize.sync()
+db.sequelize.sync({ alter: true })
   .then(() => {
     console.log('Database & tables created!');
   })
-  .catch(err => {
-    console.error('Failed to sync database:', err);
-  });
+  .catch((error) => {
+    console.error('Failed to sync database:', error);
+  }); 
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-}); 
+});

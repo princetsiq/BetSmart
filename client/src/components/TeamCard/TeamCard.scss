@@ -50,7 +50,7 @@ $dark-gray: #999;
 .team-card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
   min-height: 71px;
 }
 
@@ -60,7 +60,9 @@ $dark-gray: #999;
   color: $gray;
   font-size: 1.5rem;
   cursor: pointer;
-  outline: none;
+  // outline: none;
+  height: 20px;
+  margin: 2px 0;
 
   &:hover {
     color: darken($gray, 10%);

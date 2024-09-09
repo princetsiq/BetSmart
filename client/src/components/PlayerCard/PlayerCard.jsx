@@ -6,10 +6,6 @@ import './PlayerCard.scss';
 const PlayerCard = (props) => {
   const [showStats, setShowStats] = useState(false);
 
-  const toggleStats = () => {
-    setShowStats(!showStats);
-  };
-
   return (
     <div className="player-card-container">
       <div className="player-card-body">
@@ -34,16 +30,20 @@ const PlayerCard = (props) => {
           </div>
         )}
       </div>
-      <button className="stats-button" onClick={toggleStats}>
-        {showStats ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
-      </button>
-      {showStats && (
-        <div className="stats-slider">
-          <h3>Player Stats</h3>
-          <p>Points: {props.stats.points}</p>
-          <p>Assists: {props.stats.assists}</p>
-          <p>Rebounds: {props.stats.rebounds}</p>
-        </div>
+      {props.stats && (
+        <>
+          <button className="stats-button" onClick={() => setShowStats(!showStats)}>
+          {showStats ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
+          </button>
+          {showStats && (
+            <div className="stats-slider">
+              <h2>Player Stats</h2>
+              <p>Points: {props.stats.points}</p>
+              <p>Assists: {props.stats.assists}</p>
+              <p>Rebounds: {props.stats.rebounds}</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

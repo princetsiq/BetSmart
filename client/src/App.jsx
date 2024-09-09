@@ -55,7 +55,7 @@ function App() {
           <Route path="games" element={<Games />} />
           <Route path="teams" element={<Teams />} />
           <Route path="players" element={<Players />} />
-          <Route path="who-we-are" element={<WhoWeAre />} />
+          <Route path="about-us" element={<WhoWeAre />} />
           <Route path="my-profile" element={<MyProfile />} />
         </Route>
       </Routes>

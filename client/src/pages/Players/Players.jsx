@@ -78,6 +78,7 @@ const Players = () => {
 				const response = await axios.get(`http://localhost:5002/api/nba/player-details`, {
 					params: { teamId }
 				});
+        
 				setPlayers(response.data);
 				setLoading(false);
 			} catch (error) {
@@ -179,7 +180,7 @@ const Players = () => {
           .catch(error => {
             console.error('Error unfollowing player:', error);
           });
-      }
+      }       
     } catch (error) {
       console.error('Error fetching user session or processing follow action:', error);
     }

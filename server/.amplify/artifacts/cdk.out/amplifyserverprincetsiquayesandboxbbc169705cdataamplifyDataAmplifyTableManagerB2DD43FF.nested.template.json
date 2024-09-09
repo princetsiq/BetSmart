@@ -427,7 +427,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWOQQ6CMBBFz+K+jIJ6ACFxaQwegJR2JAOlTZhWYxruboGwev/nJfOngPyaw+kgv5wpPWSGWogPZI/65aUaRBJNJDlCrJ1BUb3tyqczpH5L3dIsjBxbLSHeg1WenF3cnmfB50Yyo2e4LUgdyqAG9KVknEWN7MKkUKw2LXdku3VsFylXzmrazlmnEXo+fooCLun9nomyKVhPI0K98Q8oehXv2wAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWOQQqDMBBFz9J9nFZLodsqdFmKPYDEZCqjMQEnaSnBuzcqrt7/PJg/BeSXHE4H+eVM6SEz1EJ8IHvULy/VIJJoIskRYu0MiuptVz6dIfVb6pZmYeTYagnxHqzy5Ozi9jwLPjeSGT3DbUHqUAY1oC8l4yxqZBcmhWK1abkj261ju0i5clbTds46jdDz8VMUcE3v90yUTcF6GhHqjX/J2B5U2wAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-server-princetsiquaye-sandbox-bbc169705c/data/amplifyData/AmplifyTableManager/CDKMetadata/Default"

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
-import "./WhoWeAre.css";
 import Jaden from "../../assets/ProfilePics/Jaden.jpeg";
 import Prince from "../../assets/ProfilePics/prince.jpg";
 import Marc from "../../assets/ProfilePics/marc.jpg";
 import AnimateLetters from "../../components/AnimateLetters/AnimateLetters";
 import Github from "../../assets/Socials/github.png";
 import Linkedin from "../../assets/Socials/linkedin-logo.svg";
+import "./WhoWeAre.css";
 
 const WhoWeAre = () => {
   const [letterClass, setLetterClass] = useState("text-animate");
@@ -31,11 +31,11 @@ const WhoWeAre = () => {
           <div className="header-title">
             <br />
             <br />
-            <AnimateLetters
+            {/* <AnimateLetters
               letterClass={letterClass}
               strArray={"Who We Are".split("")}
               idx={1}
-            />
+            /> */}
           </div>
         </div>
         <div className="about-us">

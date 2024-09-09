@@ -74,13 +74,13 @@ const SignUp = () => {
       await signUp({
         username: form.email.value,
         password: form.password.value,
-        options: {
-          userAttributes: {
-            preferred_username: form.username.value,
-            given_name: form.firstname.value,
-            family_name: form.lastname.value,
-          },
-        }
+        // options: {
+        //   userAttributes: {
+        //     preferred_username: form.username.value,
+        //     given_name: form.firstname.value,
+        //     family_name: form.lastname.value,
+        //   },
+        // }
       });
 
       alert('Sign up successful! Please check your email for verification.');
@@ -125,7 +125,7 @@ const SignUp = () => {
           lastName,
         };
 
-        await axios.post('http://localhost:5002/api/users', userPayload);
+        await axios.post('http://localhost:5002/api/create-user', userPayload);
 
         alert('Sign up successful! You can now log in.');
         navigate('/login');
@@ -177,7 +177,7 @@ const SignUp = () => {
               <div className='link-div'>
                 <p>
                   Didn't receive the code? 
-                  <a href="#" onClick={resendCode}> Click here to resend.</a>
+                  <a href="#" onClick={resendCode}> Click here to resend</a>
                 </p>
               </div>
             </form>

@@ -1,5 +1,11 @@
+import { Sequelize } from 'sequelize';
+import UserPfpModel from './userPfp.js';
+import sequelize from '../config/dbConfig.js';
+
+const UserPfp = UserPfpModel(sequelize, Sequelize.DataTypes);
+
 export default (sequelize, DataTypes) => {
-  return sequelize.define('User', {
+  const User = sequelize.define('User', {
     email: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -17,4 +23,18 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
     },
   });
+
+  User.afterCreate(async (user) => {
+    try {
+      await UserPfp.create({
+        email: user.email,
+        pfpType: 'silhouette',  
+        initials: `${user.first_name[0]}${user.last_name[0]}`.toUpperCase(), 
+      });
+    } catch (error) {
+      console.error('Error creating UserPfp:', error);
+    }
+  });
+
+  return User;
 };

@@ -33,7 +33,7 @@ const NavBar = () => {
 					<CustomLink to='/teams'>Teams</CustomLink>
 				</div>
 				<div className='home-buttons'>
-					<CustomLink to='/who-we-are'>Who We Are</CustomLink>
+					<CustomLink to='/about-us'>About Us</CustomLink>
 				</div>
 				<div className='home-buttons log-out'>
 					<Link onClick={handleLogout}>Logout</Link>
